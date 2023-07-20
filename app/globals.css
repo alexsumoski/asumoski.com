@@ -16,8 +16,25 @@
   }
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
 body {
   font-family: 'Epilogue', sans-serif;
   background-color: black;
   color: white;
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: black white;
 }

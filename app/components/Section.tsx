@@ -1,17 +1,33 @@
-import React from "react";
+"use client";
+
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import useOnScreen from "../hooks/intersectingView";
 
 interface SectionProps {
-    title: string;
-    children?: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
 }
 
 const Section: React.FC<SectionProps> = ({ title, children }) => {
-    return (
-        <section className="py-10">
-            <h2 className="text-3xl mb-4">{title}</h2>
-            {children}
-        </section>
-    );
-}
+  const ref: any = useRef();
+  const onScreen = useOnScreen(ref, "-300px");
+
+  return (
+    <div className="grid grid-cols-2 gap-4 mt-[12rem] min-h-screen">
+      <div className="sticky top-0">
+        <h2 className="text-6xl mb-4">{title}</h2>
+      </div>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+};
 
 export default Section;
