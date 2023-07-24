@@ -13,15 +13,30 @@ const Section: React.FC<SectionProps> = ({ title, children }) => {
   const ref: any = useRef();
   const onScreen = useOnScreen(ref, "-300px");
 
+  const rectVariant = {
+    hidden: { width: "0%", opacity: 0 },
+    visible: {
+      width: "20%",
+      opacity: 1,
+      transition: { delay: 0.5, duration: 0.5 },
+    },
+  };
+
   return (
-    <div className="grid grid-cols-2 gap-4 mt-[12rem] min-h-[24rem]">
-      <div className="sticky top-0">
-        <h2 className="text-6xl mb-4">{title}</h2>
+    <div className="grid grid-cols-2 gap-4 mt-[12rem] min-h-[12rem]">
+      <div className="flex flex-col">
+        <h2 className="text-6xl mb-4">{title}.</h2>
+        <motion.div
+          className="h-[0.2rem] bg-white"
+          variants={rectVariant}
+          initial="hidden"
+          animate={onScreen ? "visible" : "hidden"}
+        />
       </div>
       <motion.div
         ref={ref}
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        animate={{ opacity: onScreen ? 1 : 0 }}
         transition={{ duration: 1 }}
       >
         {children}

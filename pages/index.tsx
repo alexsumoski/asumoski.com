@@ -28,12 +28,13 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.2 }}
           transition={{ duration: 2 }}
-          className="absolute w-[50%] inset-0 gradient h-24"
+          className="absolute w-[50%] inset-0 gradient h-16"
         />
         <div className="mt-[114px]">
           <Hero />
           {/* <InProgress /> */}
           <Projects projects={projects} />
+          <Section title="Currently Learning">courses</Section>
           <Section title="Services">
             <div className="w-full h-full flex flex-col">
               <SkillPoint
@@ -56,7 +57,6 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
               />
             </div>
           </Section>
-          <Section title="Currently Learning">courses</Section>
           <Github />
         </div>
       </Layout>
