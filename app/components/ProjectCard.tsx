@@ -22,9 +22,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.6 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.5 }}
       className=" shadow-lg sm:mx-0"
     >
       <div
@@ -38,7 +39,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           width={500}
           height={500}
           layout="responsive"
-          className="hover:scale-105 hover:opacity-70 transition duration-500 ease-in-out"
+          className="hover:scale-110 transition duration-500 ease-in-out"
         />
       </div>
       <div className="py-6 px-4 flex justify-between al">

@@ -1,3 +1,4 @@
+"use client";
 import "./globals.css";
 import React from "react";
 import Header from "./components/Header";
@@ -11,13 +12,11 @@ const font = Epilogue({ subsets: ["latin"] });
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <html lang="en">
-      <body className={font.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <div className={font.className}>
+      <Header />
+      {children}
+      <Footer />
+    </div>
   );
 };
 
