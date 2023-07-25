@@ -56,7 +56,7 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
             </div>
           </Section>
           <Section title="Currently Learning">
-            <div className="flex items-start gap-8">
+            <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col">
               <Github />
               <InProgress />
             </div>
