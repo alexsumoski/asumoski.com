@@ -1,5 +1,6 @@
 import React from "react";
 import { MdAccessTime } from "react-icons/md";
+import { motion } from "framer-motion";
 
 interface CourseProps {
   time: string;
@@ -24,10 +25,12 @@ const Course: React.FC<CourseProps> = ({
           {description}
         </p>
         <div className="w-full h-2 bg-gray-900 rounded-full overflow-hidden my-4">
-          <div
+          <motion.div
             className="h-full bg-green-500"
-            style={{ width: `${progress}%` }}
-          ></div>
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 1, delay: 0.5 }}
+          />
         </div>
       </div>
       <div className="flex justify-between items-center">

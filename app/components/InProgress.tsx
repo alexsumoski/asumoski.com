@@ -9,7 +9,6 @@ import Course from "./Course";
 interface InProgressProps {}
 
 const InProgress: React.FC<InProgressProps> = () => {
-  let progress = 30;
   return (
     <motion.div
       initial={{ opacity: 0, x: 30 }}
