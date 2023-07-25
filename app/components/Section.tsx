@@ -16,15 +16,15 @@ const Section: React.FC<SectionProps> = ({ title, children }) => {
   const rectVariant = {
     hidden: { width: "0%", opacity: 0 },
     visible: {
-      width: "20%",
+      width: "15%",
       opacity: 1,
       transition: { delay: 0.5, duration: 0.5 },
     },
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 mt-[12rem] min-h-[12rem]">
-      <div className="flex flex-col">
+    <div className="grid grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-4 mt-[12rem] min-h-[12rem]">
+      <div className="flex flex-col md:mb-8 sm:mb-8">
         <h2 className="text-6xl mb-4">{title}.</h2>
         <motion.div
           className="h-[0.2rem] bg-white"

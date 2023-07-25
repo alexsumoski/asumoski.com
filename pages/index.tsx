@@ -32,9 +32,7 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
         />
         <div className="mt-[114px]">
           <Hero />
-          {/* <InProgress /> */}
           <Projects projects={projects} />
-          <Section title="Currently Learning">courses</Section>
           <Section title="Services">
             <div className="w-full h-full flex flex-col">
               <SkillPoint
@@ -57,7 +55,13 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
               />
             </div>
           </Section>
-          <Github />
+          <Section title="Currently Learning">
+            <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col">
+              <Github />
+              <InProgress />
+            </div>
+          </Section>
+          <Section title="My Journey">logos</Section>
         </div>
       </Layout>
     </Container>
