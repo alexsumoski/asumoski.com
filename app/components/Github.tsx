@@ -14,7 +14,7 @@ const Github = () => {
         const pushEvents = data.filter(
           (event: any) => event.type === "PushEvent"
         );
-        setActivity(pushEvents.slice(-1));
+        setActivity(pushEvents.slice(-5));
       });
   }, []);
 
@@ -27,7 +27,7 @@ const Github = () => {
   };
 
   return (
-    <div className="h-full w-1/2 md:w-1/2 sm:w-full p-10 bg-opacity-10 backdrop-blur-lg rounded drop-shadow-lg bg-slate-600 border-[1px] border-stone-500">
+    <div className="h-full w-full lg:w-1/2 md:w-full sm:w-full p-10 bg-opacity-10 backdrop-blur-lg rounded drop-shadow-lg bg-gradient-to-br from-black to-slate-900 border-[1px] border-stone-500">
       <h1 className="font-semibold text-3xl">Recent Activity</h1>
       <ul>
         {activity.map((event: any, index) => (
