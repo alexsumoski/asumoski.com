@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { FiExternalLink, FiCode } from "react-icons/fi";
 import { motion } from "framer-motion";
+import Tooltip from "./Tooltip"; // Path to Tooltip component
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -26,13 +27,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.5 }}
-      className=" shadow-lg sm:mx-0"
+      className="shadow-lg sm:mx-0"
     >
-      <div
-        className="
-        rounded-lg overflow-hidden 
-      "
-      >
+      <div className="rounded-lg overflow-hidden">
         <Image
           src={imageSrc}
           alt={title}
@@ -42,7 +39,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           className="hover:scale-110 transition duration-500 ease-in-out"
         />
       </div>
-      <div className="py-6 px-4 flex justify-between al">
+      <div className="py-6 px-4 flex justify-between">
         <div>
           <h3 className="text-white text-lg">{title}</h3>
           <p className="text-white opacity-70">{subtitle}</p>
@@ -58,23 +55,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               <FiCode size={30} />
             </a>
           )}
-          <a
-            className={`${
-              externalLink
-                ? "hover:opacity-80 hover:-translate-y-1 duration-300 ease-in-out"
-                : "cursor-default"
-            } ${!externalLink ? "opacity-25" : ""}`}
-            href={externalLink || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => {
-              if (!externalLink) {
-                e.preventDefault();
-              }
-            }}
-          >
-            <FiExternalLink size={30} />
-          </a>
+          {!externalLink ? (
+            <Tooltip tooltipText="Live project available soon">
+              <FiExternalLink size={30} className="opacity-25 cursor-default" />
+            </Tooltip>
+          ) : (
+            <a
+              className="hover:opacity-80 hover:-translate-y-1 duration-300 ease-in-out"
+              href={externalLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiExternalLink size={30} />
+            </a>
+          )}
         </div>
       </div>
     </motion.div>

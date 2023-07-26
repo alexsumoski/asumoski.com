@@ -1,6 +1,7 @@
 import React from "react";
 import { MdAccessTime } from "react-icons/md";
 import { motion } from "framer-motion";
+import Tooltip from "./Tooltip";
 
 interface CourseProps {
   time: string;
@@ -40,10 +41,12 @@ const Course: React.FC<CourseProps> = ({
         >
           View Course
         </a>
-        <div className="flex">
-          <MdAccessTime size={20} className="me-2" />
-          <span>{time} hours</span>
-        </div>
+        <Tooltip tooltipText="Course length">
+          <div className="flex">
+            <MdAccessTime size={20} className="me-2" />
+            <span>{time} hours</span>
+          </div>{" "}
+        </Tooltip>
       </div>
     </div>
   );
