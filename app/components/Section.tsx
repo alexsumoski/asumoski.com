@@ -23,8 +23,8 @@ const Section: React.FC<SectionProps> = ({ title, children }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-4 mt-[12rem] min-h-[12rem]">
-      <div className="flex flex-col md:mb-8 sm:mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-4 mt-[12rem] min-h-[12rem]">
+      <div className="flex flex-col mb-8">
         <h2 className="text-6xl mb-4">{title}.</h2>
         <motion.div
           className="h-[0.2rem] bg-white"

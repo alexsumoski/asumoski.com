@@ -33,7 +33,7 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
         <div className="mt-[114px]">
           <Hero />
           <Projects projects={projects} />
-          <Section title="Services">
+          {/* <Section title="Services">
             <div className="w-full h-full flex flex-col">
               <SkillPoint
                 icon={<AiOutlineEye size={32} className="me-8" />}
@@ -54,9 +54,9 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
                 description="I love to have a vision for a project and creating that into fluid clean code for users to interact with."
               />
             </div>
-          </Section>
+          </Section> */}
           <Section title="Currently Learning">
-            <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col">
+            <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col flex-col">
               <Github />
               <InProgress />
             </div>

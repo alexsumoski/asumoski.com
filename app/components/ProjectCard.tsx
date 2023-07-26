@@ -58,16 +58,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               <FiCode size={30} />
             </a>
           )}
-          {externalLink && (
-            <a
-              className="hover:opacity-80 hover:-translate-y-1 duration-300 ease-in-out"
-              href={externalLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FiExternalLink size={30} />
-            </a>
-          )}
+          <a
+            className={`${
+              externalLink
+                ? "hover:opacity-80 hover:-translate-y-1 duration-300 ease-in-out"
+                : "cursor-default"
+            } ${!externalLink ? "opacity-25" : ""}`}
+            href={externalLink || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => {
+              if (!externalLink) {
+                e.preventDefault();
+              }
+            }}
+          >
+            <FiExternalLink size={30} />
+          </a>
         </div>
       </div>
     </motion.div>
