@@ -14,14 +14,23 @@ import {
   AiOutlineCode,
 } from "react-icons/ai";
 import SkillPoint from "@/app/components/SkillPoint";
+import Modal from "@/app/components/Modal";
+import { useState } from "react";
 
 interface PageProps {
   projects: any[];
 }
 
 const IndexPage: React.FC<PageProps> = ({ projects }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <Container>
+      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
+        <div className="min-h-[20rem] p-8">
+          <h2 className="text-4xl">Test content</h2>
+        </div>
+      </Modal>
       <Layout>
         <motion.div
           initial={{ opacity: 0, y: -30 }}
