@@ -62,7 +62,9 @@ const Github = () => {
                     <GoGitBranch className="mr-2 text-neutral-400" />
                     <a
                       className="text-sm text-blue-500"
-                      href={`https://github.com/${event.repo?.name}`}
+                      href={`https://github.com/${
+                        event.repo?.name
+                      }/tree/${event.payload.ref.replace("refs/heads/", "")}`}
                       target="_blank"
                     >
                       {event.payload.ref.replace("refs/heads/", "")}
