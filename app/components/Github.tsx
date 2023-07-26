@@ -14,13 +14,10 @@ const Github = () => {
       .then((data) => {
         const pushEvents = data.filter(
           (event: any) => event.type === "PushEvent"
-          //   (event: any) => event.type === "CreateEvent"
         );
-        setActivity(pushEvents.slice(-5));
+        setActivity(pushEvents.slice(0, 4));
       });
   }, []);
-
-  console.log(activity);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -39,12 +36,12 @@ const Github = () => {
         {activity.map((event: any, index) => (
           <motion.li
             key={index}
-            className="flex flex-row justify-between items-center py-4"
-            initial={{ opacity: 0, x: -50 }} // start from a position to the left
-            animate={{ opacity: 1, x: 0 }} // animate to final position
-            transition={{ delay: index * 0.2 }} // delay increases for each item
+            className="flex flex-row w-full justify-between items-center py-4"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.2 }}
           >
-            <div className="flex flex-col w-5/6">
+            <div className="flex flex-col w-full">
               <div className="flex items-center mb-2">
                 <div></div>
                 <div>
@@ -72,21 +69,28 @@ const Github = () => {
                   </div>
                 </div>
               </div>
-              {event.payload.commits
-                ?.slice(0, 2)
-                .map((commit: any, commitIndex: number) => (
-                  <p key={commitIndex} className="text-sm text-neutral-400">
-                    {truncate(commit.message)}
-                  </p>
-                ))}
-              <span className="text-xs font-semibold text-neutral-300 mt-2">
-                {event.payload.commits.length}{" "}
-                {event.payload.commits.length > 1 ? "commits" : "commit"}
-              </span>
+              <div className="flex flex-row w-full justify-between">
+                <div
+                  className="flex
+              flex-col"
+                >
+                  {event.payload.commits
+                    ?.slice(0, 2)
+                    .map((commit: any, commitIndex: number) => (
+                      <p key={commitIndex} className="text-sm text-neutral-400">
+                        {truncate(commit.message)}
+                      </p>
+                    ))}
+                  <span className="text-xs font-semibold text-neutral-300 mt-2">
+                    {event.payload.commits.length}{" "}
+                    {event.payload.commits.length > 1 ? "commits" : "commit"}
+                  </span>
+                </div>
+                <p className="text-neutral-400 mt-3 whitespace-nowrap">
+                  {formatDate(event.created_at)}
+                </p>
+              </div>
             </div>
-            <p className="font-light text-neutral-400">
-              {formatDate(event.created_at)}
-            </p>
           </motion.li>
         ))}
       </ul>
