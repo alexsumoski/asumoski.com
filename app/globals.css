@@ -50,5 +50,17 @@ body {
     hsl(221deg 73% 70%) 74%,
     hsl(220deg 76% 51%) 100%
   );
+  filter: blur(90px);
+}
+
+.gradient-2 {
+  background-image: linear-gradient(
+    270deg,
+    hsl(0, 0%, 0%) 0%,
+    hsl(0, 0%, 22%) 26%,
+    hsl(0, 0%, 100%) 50%,
+    hsl(0, 0%, 24%) 74%,
+    hsl(0, 0%, 0%) 100%
+  );
   filter: blur(125px);
 }

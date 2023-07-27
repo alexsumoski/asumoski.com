@@ -44,7 +44,7 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.2 }}
             transition={{ duration: 2 }}
-            className="absolute w-[50%] inset-0 gradient h-16"
+            className="absolute md:w-[50%] sm:w-full inset-0 gradient h-16"
           />
           <div className="mt-[114px]">
             <Hero />

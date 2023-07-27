@@ -11,10 +11,10 @@ const Hero: React.FC = () => {
         transition={{ duration: 1, delay: 0.1 }}
         className="lg:w-full md:w-1/2 md:mb-6"
       >
-        <h1 className="2xl:text-10xl lg:text-9xl md:text-9xl sm:text-9xl text-8xl text-white mb-4 md:mb-0">
+        <h1 className="2xl:text-10xl lg:text-9xl md:text-9xl sm:text-8xl text-7xl text-white mb-4 md:mb-0">
           Alex
         </h1>
-        <h1 className="2xl:text-10xl lg:text-9xl md:text-9xl sm:text-9xl text-8xl font-bold text-white mb-4 md:mb-0">
+        <h1 className="2xl:text-10xl lg:text-9xl md:text-9xl sm:text-8xl text-7xl font-bold text-white mb-4 md:mb-0">
           Sumoski
         </h1>
       </motion.div>

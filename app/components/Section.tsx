@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import useOnScreen from "../hooks/intersectingView";
 
@@ -11,14 +11,22 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ title, children }) => {
   const ref: any = useRef();
-  const onScreen = useOnScreen(ref, "-300px");
+
+  const [rootMargin, setRootMargin] = useState("300px");
+
+  const onScreen = useOnScreen(ref, rootMargin);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    setRootMargin(isMobile ? "100px" : "300px");
+  });
 
   const rectVariant = {
     hidden: { width: "0%", opacity: 0 },
     visible: {
-      width: "15%",
+      width: "20%",
       opacity: 1,
-      transition: { delay: 0.5, duration: 0.5 },
+      transition: { delay: 1.5, duration: 0.5 },
     },
   };
 

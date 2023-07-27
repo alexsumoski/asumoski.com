@@ -25,7 +25,7 @@ const Header: React.FC = () => {
           variants={rigthFade}
           initial="hidden"
           animate="visible"
-          className="flex space-x-5"
+          className="hidden sm:flex space-x-5"
         >
           <a
             href="https://github.com/alexsumoski"
