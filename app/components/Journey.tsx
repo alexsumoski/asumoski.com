@@ -37,7 +37,7 @@ const Journey = () => {
         transition={{ duration: 2 }}
         className="absolute bottom-0 left-0 md:w-[50%] sm:w-full inset-0 gradient-2 h-16 -z-10"
       />
-      <div className="flex flex-row gap-4 md:flex-row sm:flex-col">
+      <div className="flex flex-col sm:flex-row gap-4 w-full">
         <a
           href="https://www.coursera.org/professional-certificates/google-ux-design"
           target="_blank"

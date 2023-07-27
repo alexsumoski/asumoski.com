@@ -42,18 +42,27 @@ const Footer: React.FC = () => {
           .
         </motion.div>
       </div>
-      <div className="flex flex-row justify-between w-full text-neutral-500">
+      <div className="flex flex-row justify-between w-full text-neutral-400">
         <div className="flex gap-6 underline">
-          <a href="https://github.com/alexsumoski" target="_blank">
+          <a
+            href="https://github.com/alexsumoski"
+            target="_blank"
+            className="hover:text-white transition ease-in-out"
+          >
             Github
           </a>
           <a
             href="https://www.linkedin.com/in/alexandersumoski/"
             target="_blank"
+            className="hover:text-white transition ease-in-out"
           >
             LinkedIn
           </a>
-          <a href="https://github.com/alexsumoski/asumoski.com" target="_blank">
+          <a
+            href="https://github.com/alexsumoski/asumoski.com"
+            target="_blank"
+            className="hover:text-white transition ease-in-out"
+          >
             Site Code
           </a>
         </div>

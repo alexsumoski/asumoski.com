@@ -49,7 +49,7 @@ const Github = () => {
                     <div className="flex items-center me-2">
                       <GoRepo className="mr-2 text-neutral-400" />
                       <a
-                        className="text-sm text-blue-500"
+                        className="text-sm text-blue-500 hover:text-blue-300 transition ease-in-out"
                         href={`https://github.com/${event.repo?.name}`}
                         target="_blank"
                       >
@@ -58,7 +58,7 @@ const Github = () => {
                     </div>
                     <GoGitBranch className="mr-2 text-neutral-400" />
                     <a
-                      className="text-sm text-blue-500"
+                      className="text-sm text-blue-500 hover:text-blue-300 transition ease-in-out"
                       href={`https://github.com/${
                         event.repo?.name
                       }/tree/${event.payload.ref.replace("refs/heads/", "")}`}
