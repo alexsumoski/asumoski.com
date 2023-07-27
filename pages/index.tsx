@@ -5,14 +5,9 @@ import Section from "../app/components/Section";
 import Container from "../app/components/Container";
 import { getProjects } from "@/app/lib/contentful";
 import { GetStaticProps } from "next";
-import Layout from "../app/Layout";
+import Layout from "@/app/Layout";
 import { motion } from "framer-motion";
 import Github from "@/app/components/Github";
-import {
-  AiOutlineEye,
-  AiOutlineUnorderedList,
-  AiOutlineCode,
-} from "react-icons/ai";
 import Modal from "@/app/components/Modal";
 import { useState } from "react";
 import Image1 from "../app/assets/medius.svg";
