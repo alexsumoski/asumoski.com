@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { FiExternalLink, FiCode } from "react-icons/fi";
 import { motion } from "framer-motion";
-import Tooltip from "./Tooltip"; // Path to Tooltip component
+import Tooltip from "../common/Tooltip"; // Path to Tooltip component
 
 interface ProjectCardProps {
   imageSrc: string;

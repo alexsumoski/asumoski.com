@@ -1,8 +1,8 @@
 import React from "react";
 import { MdAccessTime } from "react-icons/md";
 import { motion } from "framer-motion";
-import Tooltip from "./Tooltip";
-import Button from "./Button";
+import Tooltip from "../common/Tooltip";
+import Button from "../common/Button";
 
 interface CourseProps {
   time: string;
