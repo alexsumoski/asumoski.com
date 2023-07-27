@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import React from "react";
-import ThreeCanvas from "./Vector";
 
 const Hero: React.FC = () => {
   return (

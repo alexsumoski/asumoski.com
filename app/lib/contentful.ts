@@ -7,6 +7,5 @@ export async function getProjects() {
     });
 
     const entries = await client.getEntries({ content_type: 'project' });
-    console.log(entries.items);
     return entries.items;
 }
