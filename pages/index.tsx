@@ -3,7 +3,7 @@ import InProgress from "../app/components/InProgress";
 import Projects from "../app/components/Projects";
 import Section from "../app/components/Section";
 import Container from "../app/components/Container";
-import { getProjects } from "@/app/lib/contentful";
+import { getProjects, getCourses } from "@/app/lib/contentful";
 import { GetStaticProps } from "next";
 import Layout from "@/pages/layout";
 import { motion } from "framer-motion";
@@ -18,6 +18,7 @@ import Image from "next/image";
 
 interface PageProps {
   projects: any[];
+  courses: any[];
 }
 
 const variants = {
@@ -25,7 +26,7 @@ const variants = {
   show: { opacity: 1, y: 0 },
 };
 
-const IndexPage: React.FC<PageProps> = ({ projects }) => {
+const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
@@ -49,7 +50,7 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
           <Section title="Currently Learning">
             <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col flex-col">
               <Github />
-              <InProgress />
+              <InProgress courses={courses} />
             </div>
           </Section>
           <Section title="My Journey">
@@ -81,5 +82,6 @@ export default IndexPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const projects = await getProjects();
-  return { props: { projects } };
+  const courses = await getCourses();
+  return { props: { projects, courses } };
 };

@@ -34,10 +34,10 @@ const Footer: React.FC = () => {
           , deployed with{" "}
           <a
             className="text-blue-500"
-            href="https://github.com/features/actions"
+            href="https://vercel.com/"
             target="_blank"
           >
-            Github Actions
+            Vercel
           </a>
           .
         </motion.div>

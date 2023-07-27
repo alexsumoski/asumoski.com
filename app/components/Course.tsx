@@ -36,7 +36,7 @@ const Course: React.FC<CourseProps> = ({
         </div>
       </div>
       <div className="flex justify-between items-center">
-        <Button label="View Course" />
+        <Button label="View Course" link={link} />
         <Tooltip tooltipText="Course length">
           <div className="flex">
             <MdAccessTime size={20} className="me-2" />
