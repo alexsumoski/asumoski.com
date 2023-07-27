@@ -13,7 +13,6 @@ import {
   AiOutlineUnorderedList,
   AiOutlineCode,
 } from "react-icons/ai";
-import SkillPoint from "@/app/components/SkillPoint";
 import Modal from "@/app/components/Modal";
 import { useState } from "react";
 import Image1 from "../app/assets/medius.svg";
@@ -52,28 +51,6 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
         <div className="mt-[114px]">
           <Hero />
           <Projects projects={projects} />
-          {/* <Section title="Services">
-            <div className="w-full h-full flex flex-col">
-              <SkillPoint
-                icon={<AiOutlineEye size={32} className="me-8" />}
-                title="I build what I see"
-                link="example"
-                description="I love to have a vision for a project and creating that into fluid clean code for users to interact with."
-              />
-              <SkillPoint
-                icon={<AiOutlineUnorderedList size={32} className="me-8" />}
-                title="I build what I see"
-                link="example"
-                description="I love to have a vision for a project and creating that into fluid clean code for users to interact with."
-              />
-              <SkillPoint
-                icon={<AiOutlineCode size={32} className="me-8" />}
-                title="I build what I see"
-                link="example"
-                description="I love to have a vision for a project and creating that into fluid clean code for users to interact with."
-              />
-            </div>
-          </Section> */}
           <Section title="Currently Learning">
             <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col flex-col">
               <Github />
@@ -81,11 +58,10 @@ const IndexPage: React.FC<PageProps> = ({ projects }) => {
             </div>
           </Section>
           <Section title="My Journey">
-            <div className="flex flex-wrap justify-start items-center">
+            <div className="flex flex-wrap gap-10 justify-start items-center">
               {[Image1, Image2, Image3, Image4].map((Img, index) => (
                 <motion.a
                   key={index}
-                  className="ms-0 m-6"
                   variants={variants}
                   initial="hidden"
                   animate="show"

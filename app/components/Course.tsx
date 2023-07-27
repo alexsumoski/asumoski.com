@@ -2,6 +2,7 @@ import React from "react";
 import { MdAccessTime } from "react-icons/md";
 import { motion } from "framer-motion";
 import Tooltip from "./Tooltip";
+import Button from "./Button";
 
 interface CourseProps {
   time: string;
@@ -35,12 +36,7 @@ const Course: React.FC<CourseProps> = ({
         </div>
       </div>
       <div className="flex justify-between items-center">
-        <a
-          href={link}
-          className="border-[1px] px-4 py-2 rounded-full text-sm hover:bg-white hover:text-black duration-200 transition"
-        >
-          View Course
-        </a>
+        <Button label="View Course" />
         <Tooltip tooltipText="Course length">
           <div className="flex">
             <MdAccessTime size={20} className="me-2" />
