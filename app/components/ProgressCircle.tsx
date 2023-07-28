@@ -25,12 +25,13 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
   const { offset: animatedOffset } = useSpring({
     from: { offset: circumference },
     to: { offset },
+    delay: 1000,
     config: { duration: 1000 },
   });
   const { number } = useSpring({
     from: { number: 0 },
     to: { number: percentage },
-    delay: 1500,
+    delay: 2000,
     config: { duration: 1200 },
   });
 

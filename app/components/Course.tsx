@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { MdAccessTime } from "react-icons/md";
 import { motion } from "framer-motion";
 import Tooltip from "../common/Tooltip";
 import Button from "../common/Button";
+import useOnScreen from "../hooks/intersectingView";
 
 interface CourseProps {
   time: string;
@@ -19,8 +20,16 @@ const Course: React.FC<CourseProps> = ({
   description,
   progress,
 }) => {
+  const ref: any = useRef();
+  const onScreen = useOnScreen(ref, "-100px");
+  const [animationPlayed, setAnimationPlayed] = useState(false);
+
+  if (onScreen && !animationPlayed) {
+    setAnimationPlayed(true);
+  }
+
   return (
-    <div>
+    <div ref={ref}>
       <h3 className="text-xl">{title}</h3>
       <div className="py-4">
         <p className="text-sm text-neutral-300 leading-relaxed mb-2">
@@ -30,7 +39,7 @@ const Course: React.FC<CourseProps> = ({
           <motion.div
             className="h-full bg-green-500"
             initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
+            animate={{ width: animationPlayed ? `${progress}%` : 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           />
         </div>

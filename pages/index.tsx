@@ -41,7 +41,7 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
           </div>
         </Modal>
         <Layout>
-          <div className="mt-[98px] grid gap-8">
+          <motion.div className="mt-[98px] grid gap-8">
             <Hero />
             {/* <Haze /> */}
             <SkillCards />
@@ -61,7 +61,7 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </Layout>{" "}
       </Container>
     </>

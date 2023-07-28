@@ -9,7 +9,13 @@ import { motion } from "framer-motion";
 const SkillCard = () => {
   return (
     <div className="flex flex-col sm:flex-col md:flex-row gap-6">
-      <div className="w-full md:w-1/3">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5 }}
+        className="w-full md:w-1/3"
+      >
         <Tooltip tooltipText="My lighthouse scores ensure my site is performant, accessible, and user-friendly.">
           <div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 bg-gradient-to-r from-blue-700 to-blue-500 rounded-3xl transition ease-in-out duration-500 hover:border-neutral-400 hover:brightness-110 group">
             <div className="p-8">
@@ -25,9 +31,15 @@ const SkillCard = () => {
             <ProgressCarousel />
           </div>
         </Tooltip>
-      </div>
+      </motion.div>
 
-      <div className="w-full md:w-2/3">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5 }}
+        className="w-full md:w-2/3"
+      >
         <Tooltip tooltipText="My lighthouse scores ensure my site is performant, accessible, and user-friendly.">
           <motion.div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 hover:border-neutral-400 p-10 bg-gradient-to-r from-purple-500 to-purple-900 rounded-3xl hover:brightness-110 transition ease-in-out duration-500 group">
             <h2 className="text-2xl font-extrabold">Pixel Perfect UI</h2>
@@ -43,8 +55,7 @@ const SkillCard = () => {
               className="absolute top-[60%] left-0"
               initial={{ y: 80 }}
               animate={{ y: 0 }}
-              whileHover={{ y: -10, x: -10 }}
-              transition={{ duration: 1.25 }}
+              transition={{ duration: 1.25, delay: 1 }}
             >
               <Image src={Figma} alt={"Figma design picture"} />
             </motion.div>
@@ -52,14 +63,13 @@ const SkillCard = () => {
               className="absolute top-[40%] left-[30%]"
               initial={{ y: 80, x: 60 }}
               animate={{ y: 0, x: 0 }}
-              whileHover={{ y: -10, x: -10 }}
-              transition={{ duration: 1.5 }}
+              transition={{ duration: 1.5, delay: 1.25 }}
             >
               <Image src={Browser} alt={"Figma design picture"} />
             </motion.div>
           </motion.div>
         </Tooltip>
-      </div>
+      </motion.div>
     </div>
   );
 };
