@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
         className="lg:w-full md:w-1/2 md:mb-2"
       >
         <h4 className="sm:text-sm md:text-xl lg:text-2xl pb-2 text-neutral-400">
-          I'm Alex Sumoski.
+          I&apos;m Alex Sumoski.
         </h4>
       </motion.div>
       <motion.div

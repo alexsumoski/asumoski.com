@@ -40,7 +40,7 @@ const SkillCard = () => {
         transition={{ duration: 0.5 }}
         className="w-full md:w-2/3"
       >
-        <Tooltip tooltipText="My lighthouse scores ensure my site is performant, accessible, and user-friendly.">
+        <Tooltip tooltipText="Using tools like Figma I create a vision, and then make it a reality using front-end frameworks like Angular and React.">
           <motion.div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 hover:border-neutral-400 p-10 bg-gradient-to-r from-purple-500 to-purple-900 rounded-3xl hover:brightness-110 transition ease-in-out duration-500 group">
             <h2 className="text-2xl font-extrabold">Pixel Perfect UI</h2>
             <p className="text-sm text-neutral-200 my-2">
