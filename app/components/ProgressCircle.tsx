@@ -30,7 +30,7 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
   const { number } = useSpring({
     from: { number: 0 },
     to: { number: percentage },
-    delay: 500,
+    delay: 1500,
     config: { duration: 1200 },
   });
 

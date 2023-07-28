@@ -49,9 +49,8 @@ const Tooltip: React.FC<TooltipProps> = ({ tooltipText, children }) => {
       <animated.div
         style={props}
         className={`
-          absolute right-0 w-full max-w-lg bg-white border-[3px] border-opacity-5 rounded px-4 py-3 
+          absolute right-0 w-full max-w-lg min-w-min bg-white border-[3px] border-opacity-5 rounded px-4 py-3 
           bottom-full mb-3
-          min-w-[4rem] 
           text-black
         `}
       >

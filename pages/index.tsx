@@ -13,6 +13,7 @@ import { useState } from "react";
 import Head from "next/head";
 import SkillCards from "@/app/components/SkillCards";
 import ProjectCard from "@/app/components/ProjectCard";
+import Haze from "@/app/components/Haze";
 
 interface PageProps {
   projects: any[];
@@ -42,6 +43,7 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
         <Layout>
           <div className="mt-[98px] grid gap-8">
             <Hero />
+            {/* <Haze /> */}
             <SkillCards />
             <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
               <Github />
@@ -59,15 +61,8 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
                 />
               ))}
             </div>
-            <motion.div
-              initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.2 }}
-              transition={{ duration: 2 }}
-              className="md:w-[60%] sm:w-full inset-0 gradient h-16 -z-10"
-            />
           </div>
-        </Layout>
+        </Layout>{" "}
       </Container>
     </>
   );

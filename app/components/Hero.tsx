@@ -4,7 +4,7 @@ import React from "react";
 
 const Hero: React.FC = () => {
   return (
-    <div className="flex flex-col 2xl:flex-row xl:items-center justify-center h-[30rem] text-white">
+    <div className="flex flex-col 2xl:flex-row xl:items-center justify-center h-[36rem] text-white">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

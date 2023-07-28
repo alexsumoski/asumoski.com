@@ -30,7 +30,7 @@ const Github = () => {
     input.length > 70 ? `${input.substring(0, 70)}...` : input;
 
   return (
-    <div className="h-full w-full p-8 bg-opacity-10 backdrop-blur-lg rounded-3xl drop-shadow-lg bg-gradient-to-br from-black to-slate-900 border-[3px] border-neutral-900">
+    <div className="h-full w-full p-8 bg-opacity-10 backdrop-blur-lg rounded-3xl drop-shadow-lg bg-gradient-to-br from-black to-slate-900 border-[3px] border-neutral-900 transition ease-in-out duration-600 hover:border-neutral-600 hover:brightness-125">
       <h1 className="font-semibold text-2xl pb-4">Git History</h1>
       <ul>
         {activity.map((event: any, index) => (
