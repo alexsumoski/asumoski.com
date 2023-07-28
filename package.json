@@ -25,6 +25,7 @@
     "react-spring": "^9.7.2",
     "react-spring-carousel": "^2.0.19",
     "react-use": "^17.4.0",
+    "sass": "^1.64.1",
     "tailwindcss": "^3.3.3",
     "typescript": "5.1.6"
   }
