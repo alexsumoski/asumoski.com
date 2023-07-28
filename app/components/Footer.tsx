@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
           <a
             href="https://github.com/alexsumoski/asumoski.com"
             target="_blank"
-            className="hover:text-white transition ease-in-out"
+            className="whitespace-nowrap hover:text-white transition ease-in-out"
           >
             Site Code
           </a>

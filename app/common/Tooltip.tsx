@@ -1,32 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSpring, animated } from "react-spring";
 
 interface TooltipProps {
   tooltipText: string;
   children: React.ReactNode;
 }
 
+function isMobileDevice() {
+  return (
+    typeof window.orientation !== "undefined" ||
+    navigator.userAgent.indexOf("IEMobile") !== -1
+  );
+}
+
 const Tooltip: React.FC<TooltipProps> = ({ tooltipText, children }) => {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(isMobileDevice());
+  }, []);
+
+  const props = useSpring({
+    opacity: showTooltip ? 1 : 0,
+    transform: showTooltip ? "scale(1)" : "scale(0.9)",
+  });
+
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setShowTooltip(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setShowTooltip(false);
+    }
+  };
+
+  const handleClick = () => {
+    if (isMobile) {
+      setShowTooltip(!showTooltip);
+    }
+  };
 
   return (
     <div className="relative">
-      <div
+      <animated.div
+        style={props}
         className={`
-          absolute right-0 w-[12rem] bg-slate-700 bg-opacity-[80%] text-white text-sm rounded px-4 py-3 
+          absolute right-0 w-full max-w-lg bg-white border-[3px] border-opacity-5 rounded px-4 py-3 
           bottom-full mb-3
-          transition-all duration-200 ease-in-out 
-          ${showTooltip ? "opacity-100 scale-100" : "opacity-0 scale-90"} 
-          transform min-w-[4rem] 
+          min-w-[4rem] 
+          text-black
         `}
-        style={{
-          transition: "opacity 200ms ease-in-out, transform 200ms ease-in-out",
-        }}
       >
         {tooltipText}
-      </div>
+      </animated.div>
       <div
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
       >
         {children}
       </div>

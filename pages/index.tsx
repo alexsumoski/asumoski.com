@@ -1,5 +1,5 @@
 import Hero from "../app/components/Hero";
-import InProgress from "../app/components/InProgress";
+import Courses from "../app/components/Courses";
 import Projects from "../app/components/Projects";
 import Container from "../app/common/Container";
 import Section from "@/app/components/Section";
@@ -11,8 +11,8 @@ import Github from "@/app/components/Github";
 import Modal from "@/app/common/Modal";
 import { useState } from "react";
 import Head from "next/head";
-import Journey from "@/app/components/Journey";
 import SkillCards from "@/app/components/SkillCards";
+import ProjectCard from "@/app/components/ProjectCard";
 
 interface PageProps {
   projects: any[];
@@ -40,14 +40,25 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
           </div>
         </Modal>
         <Layout>
-          <div className="mt-[114px]">
+          <div className="mt-[98px] grid gap-8">
             <Hero />
             <SkillCards />
-            <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col flex-col">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
               <Github />
-              <InProgress courses={courses} />
+              <Courses courses={courses} />
             </div>
-            <Projects projects={projects} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {projects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  imageSrc={`https:${project.fields.image.fields.file.url}`}
+                  title={project.fields.title}
+                  subtitle={project.fields.subtitle}
+                  codeLink={project.fields.codeLink}
+                  externalLink={project.fields.externalLink}
+                />
+              ))}
+            </div>
             <motion.div
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -55,15 +66,6 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
               transition={{ duration: 2 }}
               className="md:w-[60%] sm:w-full inset-0 gradient h-16 -z-10"
             />
-            {/* <Section title="Currently Learning">
-              <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col flex-col">
-                <Github />
-                <InProgress courses={courses} />
-              </div>
-            </Section> */}
-            <Section title="My Journey">
-              <Journey />
-            </Section>
           </div>
         </Layout>
       </Container>

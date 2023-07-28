@@ -58,9 +58,8 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
         >
           {number.interpolate((n) => `${Math.floor(n)}%`)}
         </animated.text>
-        <text>{}</text>
       </svg>
-      <div>{label}</div>
+      <div className="text-center whitespace-nowrap">{label}</div>
     </div>
   );
 };
