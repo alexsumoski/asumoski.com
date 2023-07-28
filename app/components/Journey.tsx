@@ -15,33 +15,18 @@ const variants = {
 const Journey = () => {
   return (
     <div className="flex flex-wrap gap-10 justify-start items-center relative">
-      {[Image1, Image2, Image3, Image4].map((Img, index) => (
-        <motion.div
-          key={index}
-          variants={variants}
-          initial="hidden"
-          animate="show"
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-        >
-          <Image
-            className="md:w-44 sm:w-32 sm:mb-2 w-40 hover:opacity-70 transition ease-in-out cursor-pointer"
-            src={Img}
-            alt={`${index + 1} workplace`}
-          />
-        </motion.div>
-      ))}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ amount: 0.2 }}
         transition={{ duration: 2 }}
         className="absolute bottom-0 left-0 md:w-[50%] sm:w-full inset-0 gradient-2 h-16 -z-10"
-      />
+      /> */}
       <div className="flex flex-col sm:flex-row gap-4 w-full">
         <a
           href="https://www.coursera.org/professional-certificates/google-ux-design"
           target="_blank"
-          className="flex flex-row items-center gap-4 py-4 px-5 rounded-lg backdrop-blur-lg drop-shadow-lg bg-black border-[1px] bg-opacity-10 border-stone-700 hover:scale-105 cursor-pointer ease-in-out transition"
+          className="flex flex-row items-center gap-4 py-4 px-5 rounded-xl backdrop-blur-lg drop-shadow-lg bg-black border-[3px] border-neutral-900 bg-opacity-10 hover:scale-105 cursor-pointer ease-in-out transition"
         >
           <Image
             src={Image6}
@@ -59,7 +44,7 @@ const Journey = () => {
         <a
           href="https://www.millersville.edu/business/index.php"
           target="_blank"
-          className="flex flex-row items-center gap-4 py-4 px-5 rounded-lg backdrop-blur-lg drop-shadow-lg bg-black border-[1px] bg-opacity-10 border-stone-700 hover:scale-105 cursor-pointer ease-in-out transition"
+          className="flex flex-row items-center gap-4 py-4 px-5 rounded-xl backdrop-blur-lg drop-shadow-lg bg-black border-[3px] border-neutral-900 bg-opacity-10 hover:scale-105 cursor-pointer ease-in-out transition"
         >
           <Image
             src={Image5}
@@ -73,6 +58,21 @@ const Journey = () => {
           </div>
         </a>
       </div>
+      {[Image1, Image2, Image3, Image4].map((Img, index) => (
+        <motion.div
+          key={index}
+          variants={variants}
+          initial="hidden"
+          animate="show"
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
+          <Image
+            className="w-32 sm:w-28 md:w-36 sm:mb-2 hover:opacity-70 transition ease-in-out cursor-pointer"
+            src={Img}
+            alt={`${index + 1} workplace`}
+          />
+        </motion.div>
+      ))}
     </div>
   );
 };

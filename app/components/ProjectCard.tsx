@@ -27,9 +27,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.5 }}
-      className="shadow-lg sm:mx-0"
+      className="sm:mx-0"
     >
-      <div className="rounded-lg overflow-hidden">
+      <div className="rounded-3xl overflow-hidden">
         <Image
           src={imageSrc}
           alt={title}

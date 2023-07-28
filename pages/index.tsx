@@ -12,6 +12,7 @@ import Modal from "@/app/common/Modal";
 import { useState } from "react";
 import Head from "next/head";
 import Journey from "@/app/components/Journey";
+import SkillCards from "@/app/components/SkillCards";
 
 interface PageProps {
   projects: any[];
@@ -39,22 +40,27 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
           </div>
         </Modal>
         <Layout>
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ amount: 0.2 }}
-            transition={{ duration: 2 }}
-            className="absolute md:w-[50%] sm:w-full inset-0 gradient h-16"
-          />
           <div className="mt-[114px]">
             <Hero />
+            <SkillCards />
+            <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col flex-col">
+              <Github />
+              <InProgress courses={courses} />
+            </div>
             <Projects projects={projects} />
-            <Section title="Currently Learning">
+            <motion.div
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.2 }}
+              transition={{ duration: 2 }}
+              className="md:w-[60%] sm:w-full inset-0 gradient h-16 -z-10"
+            />
+            {/* <Section title="Currently Learning">
               <div className="flex items-start gap-8 lg:flex-row md:flex-col sm:flex-col flex-col">
                 <Github />
                 <InProgress courses={courses} />
               </div>
-            </Section>
+            </Section> */}
             <Section title="My Journey">
               <Journey />
             </Section>

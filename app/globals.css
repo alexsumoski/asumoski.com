@@ -50,7 +50,7 @@ body {
     hsl(221deg 73% 70%) 74%,
     hsl(220deg 76% 51%) 100%
   );
-  filter: blur(90px);
+  filter: blur(120px);
 }
 
 .gradient-2 {

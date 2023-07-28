@@ -30,7 +30,7 @@ const Github = () => {
     input.length > 70 ? `${input.substring(0, 70)}...` : input;
 
   return (
-    <div className="h-full w-full lg:w-1/2 md:w-full sm:w-full p-10 bg-opacity-10 backdrop-blur-lg rounded drop-shadow-lg bg-gradient-to-br from-black to-slate-900 border-[1px] border-stone-500">
+    <div className="h-full w-full lg:w-1/2 md:w-full sm:w-full p-8 bg-opacity-10 backdrop-blur-lg rounded-3xl drop-shadow-lg bg-gradient-to-br from-black to-slate-900 border-[3px] border-neutral-900">
       <h1 className="font-semibold text-3xl">Recent Activity</h1>
       <ul>
         {activity.map((event: any, index) => (
