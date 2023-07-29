@@ -5,6 +5,8 @@ import Image from "next/image";
 import { FiExternalLink, FiCode } from "react-icons/fi";
 import { motion } from "framer-motion";
 import Tooltip from "../common/Tooltip";
+import Pill from "../common/Status";
+import Status from "../common/Status";
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -39,37 +41,43 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           className="hover:scale-110 transition duration-500 ease-in-out"
         />
       </div>
-      <div className="py-6 px-4 flex justify-between">
-        <div>
-          <h3 className="text-white text-lg">{title}</h3>
-          <p className="text-white opacity-70">{subtitle}</p>
+      <div className="pt-6 px-2 flex flex-col">
+        <div className="flex flex-row justify-between mb-2">
+          <div>
+            <h3 className="text-white text-lg">{title}</h3>
+            <p className="text-white opacity-70">{subtitle}</p>
+          </div>
+          <div className="flex justify-end mt-2 space-x-8">
+            {codeLink && (
+              <a
+                className="hover:opacity-80 hover:-translate-y-1 duration-300 ease-in-out"
+                href={codeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiCode size={30} />
+              </a>
+            )}
+            {!externalLink ? (
+              <Tooltip tooltipText="Live project available soon">
+                <FiExternalLink
+                  size={30}
+                  className="opacity-25 cursor-default"
+                />
+              </Tooltip>
+            ) : (
+              <a
+                className="hover:opacity-80 hover:-translate-y-1 duration-300 ease-in-out"
+                href={externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiExternalLink size={30} />
+              </a>
+            )}
+          </div>
         </div>
-        <div className="flex justify-end mt-2 space-x-8">
-          {codeLink && (
-            <a
-              className="hover:opacity-80 hover:-translate-y-1 duration-300 ease-in-out"
-              href={codeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FiCode size={30} />
-            </a>
-          )}
-          {!externalLink ? (
-            <Tooltip tooltipText="Live project available soon">
-              <FiExternalLink size={30} className="opacity-25 cursor-default" />
-            </Tooltip>
-          ) : (
-            <a
-              className="hover:opacity-80 hover:-translate-y-1 duration-300 ease-in-out"
-              href={externalLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FiExternalLink size={30} />
-            </a>
-          )}
-        </div>
+        <Status status="inProgress" />
       </div>
     </motion.div>
   );

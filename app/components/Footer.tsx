@@ -23,21 +23,29 @@ const Footer: React.FC = () => {
           >
             Next.js
           </a>{" "}
-          TypeScript and{" "}
+          and{" "}
           <a
             className="text-blue-500"
             href="https://tailwindcss.com/"
             target="_blank"
           >
-            Tailwind CSS
+            Tailwind CSS.{" "}
           </a>
-          , deployed with{" "}
+          Deployed with{" "}
           <a
             className="text-blue-500"
             href="https://vercel.com/"
             target="_blank"
           >
-            Vercel
+            Vercel.{" "}
+          </a>
+          Content from{" "}
+          <a
+            className="text-blue-500"
+            href="https://www.contentful.com/"
+            target="_blank"
+          >
+            Contentful
           </a>
           .
         </motion.div>
