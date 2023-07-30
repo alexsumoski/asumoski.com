@@ -50,8 +50,8 @@ const Footer: React.FC = () => {
           .
         </motion.div>
       </div>
-      <div className="flex flex-row justify-between w-full text-neutral-400">
-        <div className="flex gap-6 underline">
+      <div className="flex flex-col md:flex-row justify-between w-full text-neutral-400">
+        <div className="flex gap-6 underline mb-4 md:mb-0">
           <a
             href="https://github.com/alexsumoski"
             target="_blank"
@@ -74,9 +74,7 @@ const Footer: React.FC = () => {
             Site Code
           </a>
         </div>
-        <motion.p initial={{ x: 90 }} animate={{ opacity: 1, x: 0 }}>
-          © {currentDate} Alex Sumoski.
-        </motion.p>
+        <p>© {currentDate} Alex Sumoski.</p>
       </div>
     </footer>
   );

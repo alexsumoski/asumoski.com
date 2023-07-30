@@ -28,7 +28,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
       className="sm:mx-0"
     >
       <div className="rounded-3xl overflow-hidden">
@@ -44,7 +44,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className="pt-6 px-2 flex flex-col">
         <div className="flex flex-row justify-between mb-2">
           <div>
-            <h3 className="text-white text-lg">{title}</h3>
+            <div className="text-white text-lg">{title}</div>
             <p className="text-white opacity-70">{subtitle}</p>
           </div>
           <div className="flex justify-end mt-2 space-x-8">
@@ -54,6 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 href={codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`View source code for the project ${title}`}
               >
                 <FiCode size={30} />
               </a>
@@ -71,6 +72,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 href={externalLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`View the live project ${title}`}
               >
                 <FiExternalLink size={30} />
               </a>

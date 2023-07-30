@@ -1,8 +1,8 @@
 import Hero from "../app/components/Hero";
 import Courses from "../app/components/Courses";
 import Projects from "../app/components/Projects";
-import Container from "../app/common/Container";
-import Section from "@/app/components/Section";
+import Container from "../app/layout/Container";
+import Section from "@/app/layout/Section";
 import { getProjects, getCourses } from "@/app/lib/contentful";
 import { GetStaticProps } from "next";
 import Layout from "@/pages/layout";
@@ -13,7 +13,6 @@ import { useState } from "react";
 import Head from "next/head";
 import SkillCards from "@/app/components/SkillCards";
 import ProjectCard from "@/app/components/ProjectCard";
-import Haze from "@/app/components/Haze";
 
 interface PageProps {
   projects: any[];
@@ -41,9 +40,8 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
           </div>
         </Modal>
         <Layout>
-          <motion.div className="mt-[98px] grid gap-8">
+          <div className="mt-[98px] grid gap-8">
             <Hero />
-            {/* <Haze /> */}
             <SkillCards />
             <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
               <Github />
@@ -61,7 +59,7 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
                 />
               ))}
             </div>
-          </motion.div>
+          </div>
         </Layout>{" "}
       </Container>
     </>

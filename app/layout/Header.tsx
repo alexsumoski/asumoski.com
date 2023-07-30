@@ -31,7 +31,8 @@ const Header: React.FC = () => {
             href="https://github.com/alexsumoski"
             target="_blank"
             rel="noreferrer"
-            className="text-white hover:scale-105 transition "
+            className="text-white hover:scale-105 transition"
+            aria-label="Link to Alex Sumoski's Github profile."
           >
             <FaGithub className="p-1 me-2" size={50} />
           </a>
@@ -40,6 +41,7 @@ const Header: React.FC = () => {
             target="_blank"
             rel="noreferrer"
             className="text-white hover:scale-105 transition"
+            aria-label="Link to Alex Sumoski's LinkedIn profile."
           >
             <FaLinkedin className="p-1" size={50} />
           </a>

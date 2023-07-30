@@ -6,7 +6,7 @@ import ProgressCircle from "./ProgressCircle"; // import your ProgressCircle com
 const ProgressCarousel: React.FC = () => {
   const items = [
     { label: "Performance", percentage: 100 },
-    { label: "Accessibility", percentage: 92 },
+    { label: "Accessibility", percentage: 100 },
     { label: "Best Practices", percentage: 100 },
     { label: "SEO", percentage: 100 },
   ];

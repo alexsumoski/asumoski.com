@@ -13,13 +13,14 @@ interface CoursesProps {
 const Courses: React.FC<CoursesProps> = ({ courses }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1, delay: 0.1 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
       className="flex flex-col justify-between p-8 w-full rounded-lg mb-10"
     >
       <h1 className="font-semibold text-2xl pb-6">Current Courses</h1>
-      <div className="flex flex-col lg:flex-col md:flex-row sm:flex-row gap-16 w-full">
+      <div className="flex flex-col gap-16 w-full">
         {courses.map((course: any) => (
           <Course
             key={course.fields.title}

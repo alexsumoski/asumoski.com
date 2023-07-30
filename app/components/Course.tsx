@@ -30,7 +30,7 @@ const Course: React.FC<CourseProps> = ({
 
   return (
     <div ref={ref}>
-      <h3 className="text-xl">{title}</h3>
+      <div className="text-xl">{title}</div>
       <div className="py-4">
         <p className="text-sm text-neutral-300 leading-relaxed mb-2">
           {description}

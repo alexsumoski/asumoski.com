@@ -13,10 +13,10 @@ const SkillCard = () => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
         className="w-full md:w-1/3"
       >
-        <Tooltip tooltipText="My lighthouse scores ensure my site is performant, accessible, and user-friendly.">
+        <Tooltip tooltipText="This website has 100% lighthouse performance scores. This ensures it's performant, accessible, and user-friendly.">
           <div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 bg-gradient-to-r from-blue-700 to-blue-500 rounded-3xl transition ease-in-out duration-500 hover:border-neutral-400 hover:brightness-110 group">
             <div className="p-8">
               <h2 className="text-2xl font-extrabold">SEO</h2>
@@ -37,15 +37,15 @@ const SkillCard = () => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
         className="w-full md:w-2/3"
       >
         <Tooltip tooltipText="Using tools like Figma I create a vision, and then make it a reality using front-end frameworks like Angular and React.">
           <motion.div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 hover:border-neutral-400 p-10 bg-gradient-to-r from-purple-500 to-purple-900 rounded-3xl hover:brightness-110 transition ease-in-out duration-500 group">
             <h2 className="text-2xl font-extrabold">Pixel Perfect UI</h2>
             <p className="text-sm text-neutral-200 my-2">
-              I apply clean code and visual standards across both professional
-              and personal projects.
+              I apply clean code and visual standards using the latest UX tools
+              and front-end frameworks.
             </p>
             <FiInfo
               size={24}

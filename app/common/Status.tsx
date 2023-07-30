@@ -18,14 +18,14 @@ const Status: React.FC<StatusProps> = ({ status }) => {
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center cursor-default">
       <div
         className={`w-2 h-2 mr-2 mb-1 rounded-full ${
           statusStyles[status].split(" ")[0]
         }`}
       />
       <span
-        className={`text-xs font-semibold ${
+        className={`text-sm font-semibold ${
           statusStyles[status].split(" ")[1]
         }`}
       >
