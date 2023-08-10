@@ -4,6 +4,9 @@ import { useSpring, animated } from "react-spring";
 interface TooltipProps {
   tooltipText: string;
   children: React.ReactNode;
+  position?: "top" | "bottom" | "left" | "right" | "middle";
+  darkBackground?: boolean;
+  wide?: boolean;
 }
 
 function isMobileDevice() {
@@ -13,7 +16,13 @@ function isMobileDevice() {
   );
 }
 
-const Tooltip: React.FC<TooltipProps> = ({ tooltipText, children }) => {
+const Tooltip: React.FC<TooltipProps> = ({
+  tooltipText,
+  children,
+  position = "top",
+  darkBackground = false,
+  wide = false,
+}) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -44,14 +53,31 @@ const Tooltip: React.FC<TooltipProps> = ({ tooltipText, children }) => {
     }
   };
 
+  const tooltipClasses = `
+    absolute ${wide ? "w-[80%]" : "w-max"} bg-${
+    darkBackground ? "black" : "white"
+  } ${darkBackground ? "text-white" : "text-black"} ${
+    darkBackground
+      ? "border-[1px] border-gray-800"
+      : "border-[3px] border-opacity-5"
+  } rounded px-4 py-3 shadow-2xl shadow-black`;
+
+  const tooltipPositionClasses = {
+    top: "bottom-full mb-3",
+    bottom: "top-full mt-3",
+    left: "right-full mr-3",
+    right: "left-full ml-3",
+    middle:
+      "top-1/2 transform -translate-y-1/2 left-1/2 transform -translate-x-1/2",
+  };
+
   return (
-    <div className="relative ">
+    <div className={`relative`}>
       <animated.div
         style={props}
         className={`
-          absolute right-0 w-full max-w-lg min-w-[8rem] bg-white border-[3px] border-opacity-5 rounded px-4 py-3 
-          bottom-full mb-3 shadow-xl shadow-slate-900
-          text-black
+          ${tooltipClasses}
+          ${tooltipPositionClasses[position]}
         `}
       >
         {tooltipText}

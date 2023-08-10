@@ -1,18 +1,17 @@
 import Hero from "../app/components/Hero";
 import Courses from "../app/components/Courses";
-import Projects from "../app/components/Projects";
 import Container from "../app/layout/Container";
 import Section from "@/app/layout/Section";
 import { getProjects, getCourses } from "@/app/lib/contentful";
 import { GetStaticProps } from "next";
-import Layout from "@/pages/layout";
-import { motion } from "framer-motion";
+import Layout from "@/app/layout/Layout";
 import Github from "@/app/components/Github";
 import Modal from "@/app/common/Modal";
 import { useState } from "react";
 import Head from "next/head";
 import SkillCards from "@/app/components/SkillCards";
-import ProjectCard from "@/app/components/ProjectCard";
+import FeaturedProject from "@/app/components/FeaturedProject";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 interface PageProps {
   projects: any[];
@@ -21,6 +20,9 @@ interface PageProps {
 
 const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const featuredProjects = projects.filter(
+    (project) => project.fields.featured
+  );
 
   return (
     <>
@@ -40,26 +42,37 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
           </div>
         </Modal>
         <Layout>
-          <div className="mt-[98px] grid gap-8">
-            <Hero />
+          <Hero />
+          <Section title="What I offer">
             <SkillCards />
+          </Section>
+          <Section title="Featured Projects">
+            {featuredProjects.map((project, index) => {
+              const descriptionComponent = project.fields.description
+                ? documentToReactComponents(project.fields.description)
+                : null;
+
+              return (
+                <FeaturedProject
+                  key={index}
+                  logo={`https:${project.fields.logoImage.fields.file.url}`}
+                  title={project.fields.title}
+                  subtitle={project.fields.subtitle}
+                  description={descriptionComponent}
+                  codeLink={project.fields.codeLink}
+                  externalLink={project.fields.externalLink}
+                  desktopImage={`https:${project.fields.desktopImage.fields.file.url}`}
+                  mobileImage={`https:${project.fields.mobileImage.fields.file.url}`}
+                />
+              );
+            })}
+          </Section>
+          <Section title="Recent activity">
             <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
               <Github />
               <Courses courses={courses} />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {projects.map((project, index) => (
-                <ProjectCard
-                  key={index}
-                  imageSrc={`https:${project.fields.image.fields.file.url}`}
-                  title={project.fields.title}
-                  subtitle={project.fields.subtitle}
-                  codeLink={project.fields.codeLink}
-                  externalLink={project.fields.externalLink}
-                />
-              ))}
-            </div>
-          </div>
+          </Section>
         </Layout>{" "}
       </Container>
     </>

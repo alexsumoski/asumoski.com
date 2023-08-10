@@ -21,33 +21,18 @@ const Section: React.FC<SectionProps> = ({ title, children }) => {
     setRootMargin(isMobile ? "100px" : "300px");
   });
 
-  const rectVariant = {
-    hidden: { width: "0%", opacity: 0 },
-    visible: {
-      width: "15%",
-      opacity: 1,
-      transition: { delay: 1.5, duration: 0.5 },
-    },
-  };
-
   return (
-    <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-4 mt-[16rem] min-h-[12rem]">
-      <div className="flex flex-col mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-4 min-h-[12rem] sm:mb-0 md:mb-[12rem]">
+      <div className="flex flex-col mb-4">
         <motion.h2
           ref={ref}
           initial={{ opacity: 0 }}
           animate={{ opacity: onScreen ? 1 : 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl font-bold mb-2"
+          className="text-2xl font-semibold"
         >
-          {title}.
+          {/* {title} */}
         </motion.h2>
-        <motion.div
-          className="h-[0.2rem] bg-white"
-          variants={rectVariant}
-          initial="hidden"
-          animate={onScreen ? "visible" : "hidden"}
-        />
       </div>
       <motion.div
         ref={ref}

@@ -13,10 +13,10 @@ interface CoursesProps {
 const Courses: React.FC<CoursesProps> = ({ courses }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.5, delay: 0.4 }}
+      initial={{ opacity: 0.3 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.25 }}
+      transition={{ duration: 0.6 }}
       className="flex flex-col justify-between p-8 w-full rounded-lg mb-10"
     >
       <h1 className="font-semibold text-2xl pb-6">Current Courses</h1>

@@ -1,77 +1,86 @@
-import { FiInfo } from "react-icons/fi";
+import { motion } from "framer-motion";
+import Card from "./Card";
 import ProgressCarousel from "./ProgressCarousel";
-import Tooltip from "../common/Tooltip";
 import Figma from "../assets/figma.png";
 import Browser from "../assets/browser.png";
+import Code from "../assets/code.png";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
-const SkillCard = () => {
+const SkillCards: React.FC = () => {
   return (
-    <div className="flex flex-col sm:flex-col md:flex-row gap-6">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="w-full md:w-1/3"
-      >
-        <Tooltip tooltipText="This website has 100% lighthouse performance scores. This ensures it's performant, accessible, and user-friendly.">
-          <div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 bg-gradient-to-r from-blue-700 to-blue-500 rounded-3xl transition ease-in-out duration-500 hover:border-neutral-400 hover:brightness-110 group">
-            <div className="p-8">
-              <h2 className="text-2xl font-extrabold">SEO</h2>
-              <p className="text-sm text-neutral-200 my-2">
-                I follow SEO & accessibility best practices.
-              </p>
-            </div>
-            <FiInfo
-              size={24}
-              className="absolute top-[1rem] right-[1rem] mt-4 mr-4 text-4xl text-white opacity-50 group-hover:opacity-100 transition-all ease-in-out duration-300 transform group-hover:-translate-y-2"
-            />
-            <ProgressCarousel />
-          </div>
-        </Tooltip>
-      </motion.div>
+    <motion.div
+      initial={{ opacity: 0.3 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.1 }}
+      transition={{ duration: 0.6 }}
+      className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6"
+    >
+      <div className="md:col-span-1">
+        <Card
+          title="SEO"
+          description="I follow SEO & accessibility best practices."
+          tooltipText="*Below are my website lighthouse scores. Using web accessibility standards I ensure my work is performant, and user-friendly."
+          gradientFrom="from-blue-700"
+          gradientTo="to-blue-500"
+        >
+          <ProgressCarousel />
+        </Card>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="w-full md:w-2/3"
-      >
-        <Tooltip tooltipText="Using tools like Figma I create a vision, and then make it a reality using front-end frameworks like Angular and React.">
-          <motion.div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 hover:border-neutral-400 p-10 bg-gradient-to-r from-purple-500 to-purple-900 rounded-3xl hover:brightness-110 transition ease-in-out duration-500 group">
-            <h2 className="text-2xl font-extrabold">Pixel Perfect UI</h2>
-            <p className="text-sm text-neutral-200 my-2">
-              I apply clean code and visual standards using the latest UX tools
-              and front-end frameworks.
-            </p>
-            <FiInfo
-              size={24}
-              className="absolute top-[1rem] right-[1rem] mt-4 mr-4 text-4xl text-white opacity-50 group-hover:opacity-100 transition-all ease-in-out duration-300 transform group-hover:-translate-y-2"
-            />
-            <motion.div
-              className="absolute top-[60%] left-0"
-              initial={{ y: 80 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1.25, delay: 1 }}
-            >
-              <Image src={Figma} alt={"Figma design picture"} />
-            </motion.div>
-            <motion.div
-              className="absolute top-[40%] left-[30%]"
-              initial={{ y: 80, x: 60 }}
-              animate={{ y: 0, x: 0 }}
-              transition={{ duration: 1.5, delay: 1.25 }}
-            >
-              <Image src={Browser} alt={"Figma design picture"} />
-            </motion.div>
+      <div className="md:col-span-2">
+        <Card
+          title="Pixel Perfect UI"
+          description="I apply clean code and visual standards using the latest UX tools and front-end frameworks."
+          tooltipText="Utilizing tools like Figma I create a vision, and then make it a reality using front-end frameworks like Angular and React."
+          gradientFrom="from-purple-500"
+          gradientTo="to-purple-900"
+        >
+          <motion.div
+            initial={{ y: 80 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1.25, delay: 1 }}
+            className="absolute top-[60%] left-0"
+          >
+            <Image src={Figma} alt={"Figma design picture"} />
           </motion.div>
-        </Tooltip>
-      </motion.div>
-    </div>
+          <motion.div
+            initial={{ y: 80, x: 60 }}
+            animate={{ y: 0, x: 0 }}
+            transition={{ duration: 1.5, delay: 1.25 }}
+            className="absolute top-[40%] left-[30%]"
+          >
+            <Image src={Browser} alt={"Figma design picture"} />
+          </motion.div>
+        </Card>
+      </div>
+
+      <div className="md:col-span-2">
+        <Card
+          title="Framework Expertise"
+          description="I excel in both Angular and React, 
+          two powerful front-end frameworks. With a strong foundation in these technologies,
+          I quickly adapt to new tools and technologies, enhancing my development skills."
+          tooltipText="Tooltip text for another card."
+          gradientFrom="from-slate-900"
+          gradientTo="to-block"
+        >
+          Content
+        </Card>
+      </div>
+
+      <div className="md:col-span-1">
+        <Card
+          title="Clean Code & Commits"
+          description=""
+          tooltipText="Tooltip text for the fourth card."
+        >
+          <motion.div className="absolute top-[25%] left-[0%] w-[26rem]">
+            <Image src={Code} alt={"Figma design picture"} />
+          </motion.div>
+        </Card>
+      </div>
+    </motion.div>
   );
 };
 
-export default SkillCard;
+export default SkillCards;
