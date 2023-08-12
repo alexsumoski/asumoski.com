@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Card from "./Card";
 import ProgressCarousel from "./ProgressCarousel";
 import Figma from "../assets/figma.png";
 import Browser from "../assets/browser.png";
-import Image from "next/image";
+import Editor from "../assets/editor.svg";
 import CodeEditor from "./CodeEditor";
 
 const SkillCards: React.FC = () => {
@@ -36,7 +37,7 @@ const SkillCards: React.FC = () => {
     };
   
     const truncate = (input) =>
-      input.length > 70 ? \`\${input.substring(0, 60)}...\` : input;
+      input.length > 60 ? \`\${input.substring(0, 60)}...\` : input;
   
     return (
       <motion.div
@@ -171,7 +172,14 @@ const SkillCards: React.FC = () => {
           gradientFrom="from-slate-900"
           gradientTo="to-block"
         >
-          content
+          <motion.div
+            initial={{ y: 40 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, delay: 2 }}
+            className="absolute top-[45%] left-0"
+          >
+            <Image src={Editor} alt={"Figma design picture"} />
+          </motion.div>
         </Card>
       </div>
 
@@ -179,7 +187,7 @@ const SkillCards: React.FC = () => {
         <Card
           title="Clean Code & Commits"
           description=""
-          tooltipText="Tooltip text for the fourth card."
+          tooltipText="I'm dedicated to writing clean, maintainable, and well-organized code. My commits are meaningful and follow best practices, making collaboration and code review efficient."
         >
           <div className=" h-[30%] overflow-hidden">
             <div
