@@ -10,7 +10,7 @@ interface IconButtonProps {
 
 const IconButton: React.FC<IconButtonProps> = ({ link, icon, disabled }) => {
   const buttonClasses = `flex items-center justify-center rounded-md h-12 w-12 bg-black border border-gray-800 duration-100 transition transform-gpu ease-in-out cursor-pointer ${
-    disabled ? "opacity-50 cursor-default" : ""
+    disabled ? "opacity-30 cursor-default" : ""
   }`;
 
   const motionProps = disabled

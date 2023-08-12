@@ -22,16 +22,16 @@ const ProgressCarousel: React.FC = () => {
   });
 
   return (
-    <div className="w-full translate-x-[33%] absolute overflow-visible">
+    <div className="w-full translate-x-[33%] -translate-y-4 absolute overflow-visible">
       <animated.div className="flex" style={transitions}>
         {items.map((item, index) => (
           <div
             key={index}
-            className={`h-[24rem] relative w-1/3 flex-shrink-0 transition-all duration-500 ${
+            className={`h-[26rem] relative w-1/3 flex-shrink-0 transition-all duration-500 ${
               index === current ? "" : "scale-50 opacity-30 blur-sm"
             }`}
           >
-            <div className="w-full h-[65%]">
+            <div className="w-full">
               <ProgressCircle label={item.label} percentage={item.percentage} />
             </div>
           </div>

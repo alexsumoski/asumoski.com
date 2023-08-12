@@ -12,6 +12,7 @@ import Head from "next/head";
 import SkillCards from "@/app/components/SkillCards";
 import FeaturedProject from "@/app/components/FeaturedProject";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import CodeEditor from "@/app/components/CodeEditor";
 
 interface PageProps {
   projects: any[];
@@ -63,6 +64,7 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
                   externalLink={project.fields.externalLink}
                   desktopImage={`https:${project.fields.desktopImage.fields.file.url}`}
                   mobileImage={`https:${project.fields.mobileImage.fields.file.url}`}
+                  technologies={project.fields.technology}
                 />
               );
             })}

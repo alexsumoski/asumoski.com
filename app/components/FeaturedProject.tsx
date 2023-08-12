@@ -1,12 +1,7 @@
-"use client";
-
-import { motion, useAnimation } from "framer-motion";
-import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { FiCode, FiExternalLink } from "react-icons/fi";
 import Tooltip from "../common/Tooltip";
-import Status from "../common/Status";
-import Logo from "../assets/scribbble.svg";
 import Button from "../common/Button";
 import IconButton from "../common/IconButton";
 
@@ -19,6 +14,7 @@ interface FeaturedProjectProps {
   externalLink?: string;
   desktopImage: string;
   mobileImage: string;
+  technologies: string[];
 }
 
 const FeaturedProject: React.FC<FeaturedProjectProps> = ({
@@ -30,6 +26,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   externalLink,
   desktopImage,
   mobileImage,
+  technologies,
 }) => {
   return (
     <motion.div
@@ -41,31 +38,47 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
     >
       <div className="flex flex-col sm:w-full md:w-full lg:w-1/2 pt-12">
         <Image width={230} height={80} src={logo} alt={title} />
-        <div className="font-bold text-3xl my-4">{subtitle}</div>
-        <div className="leading-8">{description}</div>
-        <div className="flex flex-row gap-3 md:pt-6 lg:pt-[10rem]">
+        <div className="font-bold text-3xl mt-4">{subtitle}</div>
+        <div className="leading-8 my-4">{description}</div>
+        <div className="hidden flex-wrap space-x-2 mt-3 mb-3 gap-0 md:flex">
+          {technologies.map((technology: string, index: number) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 1, scale: 1 }}
+              whileHover={{
+                scale: 1.1,
+                boxShadow: "0px 0px 8px rgba(0,0,0,0.2)",
+              }}
+              transition={{ duration: 0.2 }}
+              className="rounded-full border cursor-default text-sm border-gray-800 bg-transparent px-4 py-1"
+            >
+              <span className="flex translate-y-[1px]">{technology}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="flex flex-row gap-3 md:pt-6 lg:pt-[4rem]">
           <Button label="View case study" size="large" />
           {!codeLink ? (
             <Tooltip tooltipText="Source code not available yet" darkBackground>
-              <IconButton link="#" icon={<FiExternalLink size={30} />} />
+              <IconButton disabled icon={<FiExternalLink size={30} />} />
             </Tooltip>
           ) : (
             <Tooltip
               tooltipText="View source code for the project"
               darkBackground
             >
-              <IconButton link="#" icon={<FiCode size={30} />} />
+              <IconButton link={codeLink} icon={<FiCode size={30} />} />
             </Tooltip>
           )}
           {!externalLink ? (
             <Tooltip tooltipText="Live site not available yet" darkBackground>
-              <IconButton link="#" icon={<FiExternalLink size={30} />} />
+              <IconButton disabled icon={<FiExternalLink size={30} />} />
             </Tooltip>
           ) : (
             <Tooltip tooltipText="View the live project" darkBackground>
               <IconButton
-                disabled
-                link="#"
+                link={externalLink}
                 icon={<FiExternalLink size={30} />}
               />
             </Tooltip>
@@ -80,7 +93,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
         className="sm:w-full md:w-full lg:w-1/2 relative"
       >
         <Image
-          className="hidden md:hidden lg:block absolute top-[-35%] rounded-2xl image-no-max select-none"
+          className="hidden md:hidden lg:block absolute top-[-42%] rounded-2xl image-no-max select-none"
           height={1200}
           width={1200}
           src={desktopImage}

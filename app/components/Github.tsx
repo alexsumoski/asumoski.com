@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { GoGitBranch, GoRepo } from "react-icons/go";
 import { motion } from "framer-motion";
