@@ -1,19 +1,31 @@
-"use client";
-import "../../app/globals.css";
+// Layout.tsx
+
 import React from "react";
+import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Epilogue } from "next/font/google";
-import Bar from "./Bar";
 
 interface LayoutProps {
   children: React.ReactNode;
+  title?: string;
+  description?: string;
 }
-const font = Epilogue({ subsets: ["latin"] });
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, title, description }) => {
   return (
-    <div className={font.className}>
+    <div>
+      <Head>
+        <title>{title || "Default Title"}</title>
+        <meta
+          name="description"
+          content={
+            description ||
+            "Experienced front-end developer specialized in Angular and React. Delivering efficient UX/UI solutions with a structured approach."
+          }
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="../favicon.svg" />
+      </Head>
       <Header />
       {children}
       <Footer />

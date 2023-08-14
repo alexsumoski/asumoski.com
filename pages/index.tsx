@@ -2,13 +2,16 @@ import Hero from "../app/components/Hero";
 import Courses from "../app/components/Courses";
 import Container from "../app/layout/Container";
 import Section from "@/app/layout/Section";
-import { getProjects, getCourses } from "@/app/lib/contentful";
+import {
+  getProjects,
+  getCourses,
+  getProjectBySlug,
+} from "@/app/lib/contentful";
 import { GetStaticProps } from "next";
 import Layout from "@/app/layout/Layout";
 import Github from "@/app/components/Github";
 import Modal from "@/app/common/Modal";
 import { useState } from "react";
-import Head from "next/head";
 import SkillCards from "@/app/components/SkillCards";
 import FeaturedProject from "@/app/components/FeaturedProject";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -27,15 +30,6 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
 
   return (
     <>
-      <Head>
-        <title>Alex Sumoski | Front-end Developer</title>
-        <meta
-          name="description"
-          content="Experienced front-end developer specialized in Angular and React. Delivering efficient UX/UI solutions with a structured approach."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="../favicon.svg" />
-      </Head>
       <Container>
         <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
           <div className="min-h-[20rem] p-8">
@@ -65,6 +59,7 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
                   desktopImage={`https:${project.fields.desktopImage.fields.file.url}`}
                   mobileImage={`https:${project.fields.mobileImage.fields.file.url}`}
                   technologies={project.fields.technology}
+                  slug={project.fields.slug}
                 />
               );
             })}

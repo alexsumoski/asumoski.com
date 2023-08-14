@@ -4,6 +4,7 @@ import { FiCode, FiExternalLink } from "react-icons/fi";
 import Tooltip from "../common/Tooltip";
 import Button from "../common/Button";
 import IconButton from "../common/IconButton";
+import Link from "next/link";
 
 interface FeaturedProjectProps {
   logo: string;
@@ -15,6 +16,7 @@ interface FeaturedProjectProps {
   desktopImage: string;
   mobileImage: string;
   technologies: string[];
+  slug: string;
 }
 
 const FeaturedProject: React.FC<FeaturedProjectProps> = ({
@@ -27,6 +29,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   desktopImage,
   mobileImage,
   technologies,
+  slug,
 }) => {
   return (
     <motion.div
@@ -58,7 +61,9 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
         </div>
 
         <div className="flex flex-row gap-3 md:pt-6 lg:pt-[4rem]">
-          <Button label="View case study" size="large" />
+          <Link href={`/${slug}`} legacyBehavior>
+            <a>button</a>
+          </Link>
           {!codeLink ? (
             <Tooltip tooltipText="Source code not available yet" darkBackground>
               <IconButton disabled icon={<FiExternalLink size={30} />} />

@@ -8,113 +8,6 @@ import Editor from "../assets/editor.svg";
 import CodeEditor from "./CodeEditor";
 
 const SkillCards: React.FC = () => {
-  const exampleCode = `
-  "use client";
-
-  import { useEffect, useState } from "react";
-  import { GoGitBranch, GoRepo } from "react-icons/go";
-  import { motion } from "framer-motion";
-  
-  const Github = () => {
-    const [activity, setActivity] = useState([]);
-  
-    useEffect(() => {
-      fetch("https://api.github.com/users/alexsumoski/events")
-        .then((response) => response.json())
-        .then((data) => {
-          const pushEvents = data.filter(
-            (event) => event.type === "PushEvent"
-          );
-          setActivity(pushEvents.slice(0, 4));
-        });
-    }, []);
-  
-    const formatDate = (dateString) => {
-      const date = new Date(dateString);
-      const month = date.toLocaleString("default", { month: "short" });
-      const day = date.getDate();
-      return \`\${month} \${day}\`;
-    };
-  
-    const truncate = (input) =>
-      input.length > 60 ? \`\${input.substring(0, 60)}...\` : input;
-  
-    return (
-      <motion.div
-        initial={{ opacity: 0.3 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: false, amount: 0.25 }}
-        transition={{ duration: 0.6 }}
-        className="h-full w-full p-8 bg-opacity-10 backdrop-blur-lg rounded-3xl drop-shadow-lg bg-gradient-to-br from-black to-slate-900 border-[3px] border-neutral-900 transition ease-in-out duration-600 hover:border-neutral-600 hover:brightness-125"
-      >
-        <h1 className="font-semibold text-2xl pb-4">Git History</h1>
-        <ul>
-          {activity.map((event, index) => (
-            <motion.li
-              key={index}
-              className="flex flex-row w-full justify-between items-center py-4"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.2 }}
-            >
-              <div className="flex flex-col w-full">
-                <div className="flex items-center mb-2">
-                  <div></div>
-                  <div>
-                    <div className="flex items-center">
-                      <div className="flex items-center me-2">
-                        <GoRepo className="mr-2 text-neutral-400" />
-                        <a
-                          className="text-sm text-blue-500 hover:text-blue-300 transition ease-in-out"
-                          href={\`https://github.com/\${event.repo?.name}\`}
-                          target="_blank"
-                        >
-                          {event.repo?.name}
-                        </a>
-                      </div>
-                      <GoGitBranch className="mr-2 text-neutral-400" />
-                      <a
-                        className="text-sm text-blue-500 hover:text-blue-300 transition ease-in-out"
-                        href={\`https://github.com/\${event.repo?.name}/tree/\${event.payload.ref.replace("refs/heads/", "")}\`}
-                        target="_blank"
-                      >
-                        {event.payload.ref.replace("refs/heads/", "")}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-row w-full justify-between">
-                  <div
-                    className="flex
-                flex-col"
-                  >
-                    {event.payload.commits
-                      ?.slice(0, 2)
-                      .map((commit, commitIndex) => (
-                        <p key={commitIndex} className="text-sm text-neutral-400">
-                          {truncate(commit.message)}
-                        </p>
-                      ))}
-                    <span className="text-xs font-semibold text-neutral-300 mt-2">
-                      {event.payload.commits.length}{" "}
-                      {event.payload.commits.length > 1 ? "commits" : "commit"}
-                    </span>
-                  </div>
-                  <p className="text-neutral-500 text-sm whitespace-nowrap">
-                    {formatDate(event.created_at)}
-                  </p>
-                </div>
-              </div>
-            </motion.li>
-          ))}
-        </ul>
-      </motion.div>
-    );
-  };
-  
-  export default Github;
-`;
-
   return (
     <motion.div
       initial={{ opacity: 0.3 }}
@@ -129,7 +22,7 @@ const SkillCards: React.FC = () => {
           description="I follow SEO & accessibility best practices."
           tooltipText="*Below are my website lighthouse scores. Using web accessibility standards I ensure my work is performant, and user-friendly."
           gradientFrom="from-blue-700"
-          gradientTo="to-blue-500"
+          gradientTo="to-cyan-500"
         >
           <ProgressCarousel />
         </Card>
@@ -166,9 +59,9 @@ const SkillCards: React.FC = () => {
         <Card
           title="Framework Expertise"
           description="I excel in both Angular and React, 
-          two powerful front-end frameworks. With a strong foundation in these technologies,
+          two powerful front-end frameworks. With a strong foundation with these technologies,
           I quickly adapt to new tools and technologies, enhancing my development skills."
-          tooltipText="Tooltip text for another card."
+          tooltipText="“Any application that can be written in JavaScript, will eventually be written in JavaScript” — Jeff Atwood, Co-Founder of Stack Overflow"
           gradientFrom="from-slate-900"
           gradientTo="to-block"
         >
@@ -176,7 +69,7 @@ const SkillCards: React.FC = () => {
             initial={{ y: 40 }}
             animate={{ y: 0 }}
             transition={{ duration: 1, delay: 2 }}
-            className="absolute top-[45%] left-0"
+            className="absolute md:top-[50%] lg:top-[45%] left-0"
           >
             <Image src={Editor} alt={"Figma design picture"} />
           </motion.div>
@@ -206,3 +99,110 @@ const SkillCards: React.FC = () => {
 };
 
 export default SkillCards;
+
+const exampleCode = `
+"use client";
+
+import { useEffect, useState } from "react";
+import { GoGitBranch, GoRepo } from "react-icons/go";
+import { motion } from "framer-motion";
+
+const Github = () => {
+  const [activity, setActivity] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/alexsumoski/events")
+      .then((response) => response.json())
+      .then((data) => {
+        const pushEvents = data.filter(
+          (event) => event.type === "PushEvent"
+        );
+        setActivity(pushEvents.slice(0, 4));
+      });
+  }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const month = date.toLocaleString("default", { month: "short" });
+    const day = date.getDate();
+    return \`\${month} \${day}\`;
+  };
+
+  const truncate = (input) =>
+    input.length > 60 ? \`\${input.substring(0, 60)}...\` : input;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0.3 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.25 }}
+      transition={{ duration: 0.6 }}
+      className="h-full w-full p-8 bg-opacity-10 backdrop-blur-lg rounded-3xl drop-shadow-lg bg-gradient-to-br from-black to-slate-900 border-[3px] border-neutral-900 transition ease-in-out duration-600 hover:border-neutral-600 hover:brightness-125"
+    >
+      <h1 className="font-semibold text-2xl pb-4">Git History</h1>
+      <ul>
+        {activity.map((event, index) => (
+          <motion.li
+            key={index}
+            className="flex flex-row w-full justify-between items-center py-4"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.2 }}
+          >
+            <div className="flex flex-col w-full">
+              <div className="flex items-center mb-2">
+                <div></div>
+                <div>
+                  <div className="flex items-center">
+                    <div className="flex items-center me-2">
+                      <GoRepo className="mr-2 text-neutral-400" />
+                      <a
+                        className="text-sm text-blue-500 hover:text-blue-300 transition ease-in-out"
+                        href={\`https://github.com/\${event.repo?.name}\`}
+                        target="_blank"
+                      >
+                        {event.repo?.name}
+                      </a>
+                    </div>
+                    <GoGitBranch className="mr-2 text-neutral-400" />
+                    <a
+                      className="text-sm text-blue-500 hover:text-blue-300 transition ease-in-out"
+                      href={\`https://github.com/\${event.repo?.name}/tree/\${event.payload.ref.replace("refs/heads/", "")}\`}
+                      target="_blank"
+                    >
+                      {event.payload.ref.replace("refs/heads/", "")}
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-row w-full justify-between">
+                <div
+                  className="flex
+              flex-col"
+                >
+                  {event.payload.commits
+                    ?.slice(0, 2)
+                    .map((commit, commitIndex) => (
+                      <p key={commitIndex} className="text-sm text-neutral-400">
+                        {truncate(commit.message)}
+                      </p>
+                    ))}
+                  <span className="text-xs font-semibold text-neutral-300 mt-2">
+                    {event.payload.commits.length}{" "}
+                    {event.payload.commits.length > 1 ? "commits" : "commit"}
+                  </span>
+                </div>
+                <p className="text-neutral-500 text-sm whitespace-nowrap">
+                  {formatDate(event.created_at)}
+                </p>
+              </div>
+            </div>
+          </motion.li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+};
+
+export default Github;
+`;
