@@ -21,7 +21,7 @@ const Card: React.FC<CardProps> = ({
   children,
 }) => {
   return (
-    <Tooltip tooltipText={tooltipText} wide>
+    <Tooltip tooltipText={tooltipText} wide position="left">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

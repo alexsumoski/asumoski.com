@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSpring, animated } from "react-spring";
 
 interface TooltipProps {
   tooltipText: string;
   children: React.ReactNode;
-  position?: "top" | "bottom" | "left" | "right" | "middle";
+  position?: "left" | "right" | "middle";
   darkBackground?: boolean;
   wide?: boolean;
 }
@@ -19,16 +19,35 @@ function isMobileDevice() {
 const Tooltip: React.FC<TooltipProps> = ({
   tooltipText,
   children,
-  position = "top",
+  position = "right",
   darkBackground = false,
   wide = false,
 }) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     setIsMobile(isMobileDevice());
-  }, []);
+
+    const handleDocumentClick = (event: MouseEvent) => {
+      if (
+        tooltipRef.current &&
+        !tooltipRef.current.contains(event.target as Node)
+      ) {
+        setShowTooltip(false);
+      }
+    };
+
+    if (showTooltip) {
+      document.addEventListener("click", handleDocumentClick);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [showTooltip]);
 
   const props = useSpring({
     opacity: showTooltip ? 1 : 0,
@@ -54,25 +73,23 @@ const Tooltip: React.FC<TooltipProps> = ({
   };
 
   const tooltipClasses = `
-    absolute ${wide ? "w-[80%]" : "w-max"} bg-${
+    absolute z-10 ${wide ? "w-[80%]" : "w-max"} bg-${
     darkBackground ? "black" : "white"
   } ${darkBackground ? "text-white" : "text-black"} ${
     darkBackground
       ? "border-[1px] border-gray-800"
-      : "border-[3px] border-opacity-5"
+      : "border-[3px] border-opacity-100"
   } rounded px-4 py-3 shadow-2xl shadow-black`;
 
   const tooltipPositionClasses = {
-    top: "bottom-full mb-3",
-    bottom: "top-full mt-3",
-    left: "right-full mr-3",
-    right: "left-full ml-3",
+    left: "top-full right-0 -top-0 md:-top-16",
+    right: "top-full left-0 -top-0 md:-top-16",
     middle:
       "top-1/2 transform -translate-y-1/2 left-1/2 transform -translate-x-1/2",
   };
 
   return (
-    <div className={`relative`}>
+    <div className={`relative`} ref={tooltipRef}>
       <animated.div
         style={props}
         className={`

@@ -46,7 +46,6 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
               const descriptionComponent = project.fields.description
                 ? documentToReactComponents(project.fields.description)
                 : null;
-
               return (
                 <FeaturedProject
                   key={index}
@@ -70,7 +69,7 @@ const IndexPage: React.FC<PageProps> = ({ projects, courses }) => {
               <Courses courses={courses} />
             </div>
           </Section>
-        </Layout>{" "}
+        </Layout>
       </Container>
     </>
   );

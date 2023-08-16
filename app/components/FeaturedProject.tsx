@@ -37,14 +37,16 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, amount: 0.25 }}
       transition={{ duration: 0.6 }}
-      className="sm:mx-0 w-full flex flex-col md:flex-col lg:flex-row relative mb-52"
+      className="sm:mx-0 w-full flex flex-col md:flex-col lg:flex-row relative my-24"
     >
       <div className="flex flex-col sm:w-full md:w-full lg:w-1/2 pt-12">
         <Image width={230} height={80} src={logo} alt={title} />
-        <div className="font-bold text-3xl mt-4">{subtitle}</div>
-        <div className="leading-8 my-4">{description}</div>
+        <div className="font-bold text-2xl md:text-3xl mt-4">{subtitle}</div>
+        <div className="leading-8 my-4 lg:max-w-[550px] text-neutral-200">
+          {description}
+        </div>
         <div className="hidden flex-wrap space-x-2 mt-3 mb-3 gap-0 md:flex">
-          {technologies.map((technology: string, index: number) => (
+          {technologies.slice(0, 3).map((technology: string, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 1, scale: 1 }}
@@ -60,10 +62,11 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
           ))}
         </div>
 
-        <div className="flex flex-row gap-3 md:pt-6 lg:pt-[4rem]">
+        <div className="flex flex-row gap-3 mb-6 mt-1 md:pt-6 lg:pt-[4rem]">
           <Link href={`/${slug}`} legacyBehavior>
-            <a>button</a>
+            <Button label="View Case Study" size="large" />
           </Link>
+
           {!codeLink ? (
             <Tooltip tooltipText="Source code not available yet" darkBackground>
               <IconButton disabled icon={<FiExternalLink size={30} />} />
@@ -98,18 +101,18 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
         className="sm:w-full md:w-full lg:w-1/2 relative"
       >
         <Image
-          className="hidden md:hidden lg:block absolute top-[-42%] rounded-2xl image-no-max select-none"
+          className="hidden md:hidden lg:block absolute top-[-25%] rounded-2xl image-no-max select-none"
           height={1200}
           width={1200}
           src={desktopImage}
           alt="Scribbble"
         />
         <Image
-          className="block md:block lg:hidden top-[-30%] rounded-2xl select-none"
-          height={1200}
-          width={1200}
-          src={mobileImage}
-          alt="Scribbble"
+          className="block md:block lg:hidden top-[-30%] rounded-2xl image-no-max select-none"
+          height={800}
+          width={800}
+          src={desktopImage}
+          alt="desktopImage"
         />
       </motion.div>
     </motion.div>
