@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
   } duration-300 transition transform-gpu ease-in-out ${
     disabled ? "opacity-50" : "cursor-pointer"
   } ${fullWidth ? "w-full" : ""} ${
-    variant === "white" ? "hover:opacity-80" : "hover:bg-zinc-900"
+    variant === "white" ? "hover:opacity-70" : "hover:bg-zinc-800"
   }`;
 
   return (

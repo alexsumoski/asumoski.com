@@ -73,13 +73,15 @@ const Tooltip: React.FC<TooltipProps> = ({
   };
 
   const tooltipClasses = `
-    absolute z-10 ${wide ? "w-[80%]" : "w-max"} bg-${
-    darkBackground ? "black" : "white"
-  } ${darkBackground ? "text-white" : "text-black"} ${
+    absolute z-10 pointer-events-none ${
+      wide ? "w-[80%] min-w-[300px]" : "w-max"
+    } bg-${darkBackground ? "black" : "white"} ${
+    darkBackground ? "text-white" : "text-black"
+  } ${
     darkBackground
       ? "border-[1px] border-gray-800"
       : "border-[3px] border-opacity-100"
-  } rounded px-4 py-3 shadow-2xl shadow-black`;
+  } rounded px-4 py-3 shadow-2xl shadow-[#000000aa]`;
 
   const tooltipPositionClasses = {
     left: "top-full right-0 -top-0 md:-top-16",

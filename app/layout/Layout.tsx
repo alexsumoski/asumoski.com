@@ -15,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title, description }) => {
   return (
     <div>
       <Head>
-        <title>{title || "Default Title"}</title>
+        <title>{title || "Alex Sumoski | Front-end Developer"}</title>
         <meta
           name="description"
           content={

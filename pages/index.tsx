@@ -15,7 +15,6 @@ import { useState } from "react";
 import SkillCards from "@/app/components/SkillCards";
 import FeaturedProject from "@/app/components/FeaturedProject";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import CodeEditor from "@/app/components/CodeEditor";
 
 interface PageProps {
   projects: any[];

@@ -8,6 +8,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { motion } from "framer-motion";
 import Button from "@/app/common/Button";
 import Status from "@/app/common/Status";
+import BodySection from "@/app/components/BodySection";
 
 interface ProjectDetailProps {
   project: {
@@ -24,6 +25,7 @@ interface ProjectDetailProps {
       technology: string[];
       slug: string;
       body: any;
+      bodySections: any;
     };
   };
 }
@@ -42,7 +44,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
     technology,
     slug,
     body,
+    bodySections,
   } = project.fields;
+
+  console.log(bodySections);
 
   const bodyContent = documentToReactComponents(body, {
     renderNode: {
@@ -64,8 +69,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
         <div className="relative mt-20 flex flex-col justify-between">
           <div className="flex justify-between">
             <div>
-              <h1 className="text-6xl mb-2">{title} Case Study</h1>
-              <h3 className="text-2xl">{subtitle}</h3>
+              <h1 className="text-6xl mb-4">{title} Case Study</h1>
+              <h3 className="text-2xl font-light">{subtitle}</h3>
             </div>
           </div>
           <div className="flex flex-col lg:flex-row justify-between my-8 gap-4">
@@ -139,7 +144,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
               </div>
             </div>
           </div>
-          <div className="mt-32 max-w-3xl">{bodyContent}</div>
+          <div className="mt-32">
+            {bodySections.map((section: any) => (
+              <BodySection section={section} variant={section.fields.variant} />
+            ))}
+          </div>
         </div>
       </Layout>
     </Container>

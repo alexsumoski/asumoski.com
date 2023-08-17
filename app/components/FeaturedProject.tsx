@@ -63,10 +63,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
         </div>
 
         <div className="flex flex-row gap-3 mb-6 mt-1 md:pt-6 lg:pt-[4rem]">
-          <Link href={`/${slug}`} legacyBehavior>
-            <Button label="View Case Study" size="large" />
-          </Link>
-
+          <Button label="View Case Study" size="large" link={`/${slug}`} />
           {!codeLink ? (
             <Tooltip tooltipText="Source code not available yet" darkBackground>
               <IconButton disabled icon={<FiExternalLink size={30} />} />

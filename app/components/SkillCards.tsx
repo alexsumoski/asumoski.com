@@ -39,7 +39,7 @@ const SkillCards: React.FC = () => {
           <motion.div
             initial={{ y: 80 }}
             animate={{ y: 0 }}
-            transition={{ duration: 1.25, delay: 1 }}
+            transition={{ duration: 1.25, delay: 0.2 }}
             className="absolute top-[60%] left-0"
           >
             <Image src={Figma} alt={"Figma design picture"} />
@@ -47,7 +47,7 @@ const SkillCards: React.FC = () => {
           <motion.div
             initial={{ y: 80, x: 60 }}
             animate={{ y: 0, x: 0 }}
-            transition={{ duration: 1.5, delay: 1.25 }}
+            transition={{ duration: 1.5, delay: 0.3 }}
             className="absolute top-[40%] left-[30%]"
           >
             <Image src={Browser} alt={"Figma design picture"} />

@@ -21,7 +21,9 @@ const Header: React.FC = () => {
       <div className="fixed top-0 left-0 right-0 w-full z-10 bg-transparent backdrop-filter backdrop-blur-lg bg-opacity-30">
         <div className="flex justify-between items-center xl:px-20 md:px-8 sm:px-2 px-4 py-6 w-full">
           <motion.div variants={leftFade} initial="hidden" animate="visible">
-            <Image src={logo} height={50} width={50} alt="Logo" />
+            <a href="/">
+              <Image src={logo} height={50} width={50} alt="Logo" />
+            </a>
           </motion.div>
           <motion.div
             variants={rigthFade}
