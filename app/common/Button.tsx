@@ -7,6 +7,7 @@ interface ButtonProps {
   variant?: "white" | "black";
   disabled?: boolean;
   fullWidth?: boolean;
+  blank?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,6 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = "white",
   disabled = false,
   fullWidth = false,
+  blank = false,
 }) => {
   const buttonClasses = `flex items-center justify-center rounded-md select-none ${
     size === "small" ? "py-2 px-4 text-sm" : "py-3 px-5 text-base"
@@ -32,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <motion.a
       href={link}
-      target="_blank"
+      target={blank ? "_blank" : ""}
       className={buttonClasses}
       whileTap={{ scale: 0.95 }}
       onClick={disabled ? (e) => e.preventDefault() : undefined}

@@ -47,8 +47,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
     bodySections,
   } = project.fields;
 
-  console.log(bodySections);
-
   const bodyContent = documentToReactComponents(body, {
     renderNode: {
       "heading-2": (node, children) => (
@@ -145,8 +143,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
             </div>
           </div>
           <div className="mt-32">
-            {bodySections.map((section: any) => (
-              <BodySection section={section} variant={section.fields.variant} />
+            {bodySections.map((section: any, index: number) => (
+              <BodySection
+                key={index}
+                section={section}
+                variant={section.sys.contentType.sys.id}
+              />
             ))}
           </div>
         </div>

@@ -82,7 +82,10 @@ const Github = () => {
                   {event.payload.commits
                     ?.slice(0, 2)
                     .map((commit: any, commitIndex: number) => (
-                      <p key={commitIndex} className="text-sm text-neutral-400">
+                      <p
+                        key={commitIndex}
+                        className="text-sm text-neutral-400 me-1"
+                      >
                         {truncate(commit.message)}
                       </p>
                     ))}

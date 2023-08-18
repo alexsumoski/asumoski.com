@@ -1,71 +1,93 @@
+import React from "react";
 import Image from "next/image";
-
-type ImageField = {
-  fields: {
-    file: {
-      url: string;
-    };
-  };
-};
-
-type SectionFields = {
-  heading?: string;
-  title: string;
-  paragraph?: string;
-  image?: ImageField;
-};
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 type BodySectionProps = {
-  section: {
-    fields: SectionFields;
-  };
-  variant: "text-image" | "image-text" | "text-text" | "text-center" | "image";
+  section: any;
+  variant: "contentSection" | "contentImage" | "contentCenter";
 };
 
 const BodySection: React.FC<BodySectionProps> = ({ section, variant }) => {
   if (!section || !section.fields) return null;
 
-  const { heading, title, paragraph, image } = section.fields;
+  const { title, image, imagePosition, content } = section.fields;
+
+  const bodyContent = documentToReactComponents(content, {
+    renderNode: {
+      "heading-2": (node, children) => (
+        <h2 className="text-4xl mb-4 font-bold">{children}</h2>
+      ),
+      "heading-3": (node, children) => (
+        <h3 className="text-xl font-semibold">{children}</h3>
+      ),
+      paragraph: (node, children) => (
+        <p className="text-lg leading-8 mb-4 text-neutral-400">{children}</p>
+      ),
+      "unordered-list": (node, children) => (
+        <ul className="list-decimal pl-5">{children}</ul>
+      ),
+      "list-item": (node, children) => (
+        <li className="list-disc text-neutral-400">{children}</li>
+      ),
+    },
+  });
 
   switch (variant) {
-    case "text-image":
+    case "contentSection":
       return (
-        <div className="flex flex-col lg:flex-row justify-between my-8 gap-4">
-          <div className="sm:w-full lg:w-1/2">
-            <h2 className="mb-2 text-sm tracking-widest font-semibold uppercase text-slate-400">
-              {heading}
-            </h2>
-            <h2 className="text-xl tracking-wider font-semibold mb-2">
-              {title}
-            </h2>
-            <p className="text-lg leading-8 font-light">{paragraph}</p>
-          </div>
+        <div className="flex flex-col lg:flex-row justify-between my-8 gap-8">
+          <div className="sm:w-full lg:w-1/2">{bodyContent}</div>
           <div className="sm:w-full lg:w-1/2 flex justify-center">
-            <Image
-              width={350}
-              height={350}
-              src={`https:${image?.fields.file.url}`}
-              alt={`${title} case study image.`}
-              className="rounded-xl"
-            />
+            {image && (
+              <Image
+                width={400}
+                height={400}
+                src={`https:${image.fields.file.url}`}
+                alt={`${title} case study image.`}
+                className="rounded-xl"
+              />
+            )}
           </div>
         </div>
       );
 
-    case "image-text":
-      return <div></div>;
-
-    case "text-text":
-      return <div></div>;
-
-    case "text-center":
-      return <div></div>;
-
-    case "image":
-      return <div></div>;
+    case "contentImage":
+      return (
+        <div className="flex flex-col md:flex-row justify-center my-[12rem] gap-8">
+          {imagePosition === "left" && (
+            <div className="sm:w-full lg:w-1/2">
+              <Image
+                width={450}
+                height={450}
+                src={`https:${image.fields.file.url}`}
+                alt={`${title} case study image.`}
+                className="rounded-xl"
+              />
+            </div>
+          )}
+          <div className="sm:w-full lg:w-1/2">{bodyContent}</div>
+          {imagePosition === "right" && (
+            <div className="sm:w-full lg:w-1/2">
+              <Image
+                width={450}
+                height={450}
+                src={`https:${image.fields.file.url}`}
+                alt={`${title} case study image.`}
+                className="rounded-xl"
+              />
+            </div>
+          )}
+        </div>
+      );
+    case "contentCenter":
+      return (
+        <div className="flex m-auto flex-col max-w-[700px] items-center my-[6rem] p-6 border-gray-800 rounded-xl">
+          {documentToReactComponents(content)}
+        </div>
+      );
 
     default:
-      return null;
+      return <div>{JSON.stringify(section)}</div>;
   }
 };
 
