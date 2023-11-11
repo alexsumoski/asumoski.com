@@ -67,7 +67,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
         <div className="relative mt-20 flex flex-col justify-between">
           <div className="flex justify-between">
             <div>
-              <h1 className="text-6xl mb-4">{title} Case Study</h1>
+              <h1 className="text-6xl mb-4">{title} Project</h1>
               <h3 className="text-2xl font-light">{subtitle}</h3>
             </div>
           </div>
@@ -130,6 +130,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
                   disabled={!externalLink}
                   fullWidth
                   link={externalLink}
+                  blank
                 />
                 <Button
                   label="View Source Code"
@@ -138,16 +139,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
                   disabled={!codeLink}
                   fullWidth
                   link={codeLink}
+                  blank
                 />
               </div>
             </div>
           </div>
-          <div className="mt-32">
+          <div className="mt-0 m-auto sm:max-w-[90%] md:max-w-screen-lg">
             {bodySections.map((section: any, index: number) => (
               <BodySection
                 key={index}
                 section={section}
-                variant={section.sys.contentType.sys.id}
+                variant={section.sys.contentType?.sys.id}
               />
             ))}
           </div>

@@ -98,7 +98,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
         className="sm:w-full md:w-full lg:w-1/2 relative"
       >
         <Image
-          className="hidden md:hidden lg:block absolute top-[-25%] rounded-2xl image-no-max select-none"
+          className="hidden md:hidden lg:block absolute top-[-20%] rounded-2xl image-no-max select-none"
           height={1200}
           width={1200}
           src={desktopImage}
