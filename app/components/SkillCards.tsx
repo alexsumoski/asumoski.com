@@ -88,8 +88,8 @@ const SkillCards: React.FC = () => {
               style={{ zIndex: -1 }}
             ></div>
 
-            <motion.div className="absolute top-[-10%] left-[0%] w-[26rem] z-[-2]">
-              <CodeEditor code={exampleCode} typingSpeed={30} />
+            <motion.div className="absolute top-[0%] left-[0%] w-[26rem] z-[-2]">
+              <CodeEditor code={exampleCode} typingSpeed={50} />
             </motion.div>
           </div>
         </Card>

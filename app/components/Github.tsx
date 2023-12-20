@@ -8,7 +8,7 @@ const Github = () => {
   const [activity, setActivity] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.github.com/users/xcomerc20/events")
+    fetch("https://api.github.com/users/alexsumoski/events")
       .then((response) => response.json())
       .then((data) => {
         const pushEvents = data.filter(
