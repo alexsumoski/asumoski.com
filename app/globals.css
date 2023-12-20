@@ -26,13 +26,14 @@
 
 ::-webkit-scrollbar-thumb {
   background: black;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
 
 body {
   font-family: 'Epilogue', sans-serif;
   background-color: black;
+  overflow-x: hidden;
   color: white;
   /* For Firefox */
   scrollbar-width: thin;
@@ -63,4 +64,8 @@ body {
     hsl(0, 0%, 0%) 100%
   );
   filter: blur(120px);
+}
+
+.image-no-max {
+  max-width: none !important;
 }

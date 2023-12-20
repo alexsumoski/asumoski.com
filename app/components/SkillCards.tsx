@@ -1,77 +1,208 @@
-import { FiInfo } from "react-icons/fi";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Card from "./Card";
 import ProgressCarousel from "./ProgressCarousel";
-import Tooltip from "../common/Tooltip";
 import Figma from "../assets/figma.png";
 import Browser from "../assets/browser.png";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import Editor from "../assets/editor.svg";
+import CodeEditor from "./CodeEditor";
 
-const SkillCard = () => {
+const SkillCards: React.FC = () => {
   return (
-    <div className="flex flex-col sm:flex-col md:flex-row gap-6">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="w-full md:w-1/3"
-      >
-        <Tooltip tooltipText="This website has 100% lighthouse performance scores. This ensures it's performant, accessible, and user-friendly.">
-          <div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 bg-gradient-to-r from-blue-700 to-blue-500 rounded-3xl transition ease-in-out duration-500 hover:border-neutral-400 hover:brightness-110 group">
-            <div className="p-8">
-              <h2 className="text-2xl font-extrabold">SEO</h2>
-              <p className="text-sm text-neutral-200 my-2">
-                I follow SEO & accessibility best practices.
-              </p>
-            </div>
-            <FiInfo
-              size={24}
-              className="absolute top-[1rem] right-[1rem] mt-4 mr-4 text-4xl text-white opacity-50 group-hover:opacity-100 transition-all ease-in-out duration-300 transform group-hover:-translate-y-2"
-            />
-            <ProgressCarousel />
-          </div>
-        </Tooltip>
-      </motion.div>
+    <motion.div
+      initial={{ opacity: 0.3 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.1 }}
+      transition={{ duration: 0.4 }}
+      className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6"
+    >
+      <div className="md:col-span-1">
+        <Card
+          title="SEO"
+          description="I follow SEO & accessibility best practices."
+          tooltipText="*Below are my website lighthouse scores. Using web accessibility standards I ensure my work is performant, and user-friendly."
+          gradientFrom="from-blue-700"
+          gradientTo="to-cyan-500"
+        >
+          <ProgressCarousel />
+        </Card>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="w-full md:w-2/3"
-      >
-        <Tooltip tooltipText="Using tools like Figma I create a vision, and then make it a reality using front-end frameworks like Angular and React.">
-          <motion.div className="h-[24rem] relative overflow-hidden border-[3px] border-neutral-900 hover:border-neutral-400 p-10 bg-gradient-to-r from-purple-500 to-purple-900 rounded-3xl hover:brightness-110 transition ease-in-out duration-500 group">
-            <h2 className="text-2xl font-extrabold">Pixel Perfect UI</h2>
-            <p className="text-sm text-neutral-200 my-2">
-              I apply clean code and visual standards using the latest UX tools
-              and front-end frameworks.
-            </p>
-            <FiInfo
-              size={24}
-              className="absolute top-[1rem] right-[1rem] mt-4 mr-4 text-4xl text-white opacity-50 group-hover:opacity-100 transition-all ease-in-out duration-300 transform group-hover:-translate-y-2"
-            />
-            <motion.div
-              className="absolute top-[60%] left-0"
-              initial={{ y: 80 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1.25, delay: 1 }}
-            >
-              <Image src={Figma} alt={"Figma design picture"} />
-            </motion.div>
-            <motion.div
-              className="absolute top-[40%] left-[30%]"
-              initial={{ y: 80, x: 60 }}
-              animate={{ y: 0, x: 0 }}
-              transition={{ duration: 1.5, delay: 1.25 }}
-            >
-              <Image src={Browser} alt={"Figma design picture"} />
-            </motion.div>
+      <div className="md:col-span-2">
+        <Card
+          title="Pixel Perfect UI"
+          description="I apply clean code and visual standards using the latest UX tools and front-end frameworks."
+          tooltipText="Utilizing tools like Figma I create a vision, and then make it a reality using front-end frameworks like Angular and React."
+          gradientFrom="from-purple-500"
+          gradientTo="to-purple-900"
+        >
+          <motion.div
+            initial={{ y: 80 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1.25, delay: 0.2 }}
+            className="absolute top-[60%] left-0"
+          >
+            <Image src={Figma} alt={"Figma design picture"} />
           </motion.div>
-        </Tooltip>
-      </motion.div>
-    </div>
+          <motion.div
+            initial={{ y: 80, x: 60 }}
+            animate={{ y: 0, x: 0 }}
+            transition={{ duration: 1.5, delay: 0.3 }}
+            className="absolute top-[40%] left-[30%]"
+          >
+            <Image src={Browser} alt={"Figma design picture"} />
+          </motion.div>
+        </Card>
+      </div>
+
+      <div className="md:col-span-2">
+        <Card
+          title="Framework Expertise"
+          description="I excel in both Angular and React, 
+          two powerful front-end frameworks. With a strong foundation with these technologies,
+          I quickly adapt to new tools and technologies, enhancing my development skills."
+          tooltipText="“Any application that can be written in JavaScript, will eventually be written in JavaScript” — Jeff Atwood, Co-Founder of Stack Overflow"
+          gradientFrom="from-slate-900"
+          gradientTo="to-block"
+        >
+          <motion.div
+            initial={{ y: 40 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, delay: 2 }}
+            className="absolute md:top-[50%] lg:top-[45%] left-0"
+          >
+            <Image src={Editor} alt={"Figma design picture"} />
+          </motion.div>
+        </Card>
+      </div>
+
+      <div className="md:col-span-1">
+        <Card
+          title="Clean Code & Commits"
+          description=""
+          tooltipText="I'm dedicated to writing clean, maintainable, and well-organized code. My commits are meaningful and follow best practices, making collaboration and code review efficient."
+        >
+          <div className=" h-[30%] overflow-hidden">
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-black to-transparent h-1/2"
+              style={{ zIndex: -1 }}
+            ></div>
+
+            <motion.div className="absolute top-[0%] left-[0%] w-[26rem] z-[-2]">
+              <CodeEditor code={exampleCode} typingSpeed={50} />
+            </motion.div>
+          </div>
+        </Card>
+      </div>
+    </motion.div>
   );
 };
 
-export default SkillCard;
+export default SkillCards;
+
+const exampleCode = `
+"use client";
+
+import { useEffect, useState } from "react";
+import { GoGitBranch, GoRepo } from "react-icons/go";
+import { motion } from "framer-motion";
+
+const Github = () => {
+  const [activity, setActivity] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/alexsumoski/events")
+      .then((response) => response.json())
+      .then((data) => {
+        const pushEvents = data.filter(
+          (event) => event.type === "PushEvent"
+        );
+        setActivity(pushEvents.slice(0, 4));
+      });
+  }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const month = date.toLocaleString("default", { month: "short" });
+    const day = date.getDate();
+    return \`\${month} \${day}\`;
+  };
+
+  const truncate = (input) =>
+    input.length > 60 ? \`\${input.substring(0, 60)}...\` : input;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0.3 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.25 }}
+      transition={{ duration: 0.6 }}
+      className="h-full w-full p-8 bg-opacity-10 backdrop-blur-lg rounded-3xl drop-shadow-lg bg-gradient-to-br from-black to-slate-900 border-[3px] border-neutral-900 transition ease-in-out duration-600 hover:border-neutral-600 hover:brightness-125"
+    >
+      <h1 className="font-semibold text-2xl pb-4">Git History</h1>
+      <ul>
+        {activity.map((event, index) => (
+          <motion.li
+            key={index}
+            className="flex flex-row w-full justify-between items-center py-4"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.2 }}
+          >
+            <div className="flex flex-col w-full">
+              <div className="flex items-center mb-2">
+                <div></div>
+                <div>
+                  <div className="flex items-center">
+                    <div className="flex items-center me-2">
+                      <GoRepo className="mr-2 text-neutral-400" />
+                      <a
+                        className="text-sm text-blue-500 hover:text-blue-300 transition ease-in-out"
+                        href={\`https://github.com/\${event.repo?.name}\`}
+                        target="_blank"
+                      >
+                        {event.repo?.name}
+                      </a>
+                    </div>
+                    <GoGitBranch className="mr-2 text-neutral-400" />
+                    <a
+                      className="text-sm text-blue-500 hover:text-blue-300 transition ease-in-out"
+                      href={\`https://github.com/\${event.repo?.name}/tree/\${event.payload.ref.replace("refs/heads/", "")}\`}
+                      target="_blank"
+                    >
+                      {event.payload.ref.replace("refs/heads/", "")}
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-row w-full justify-between">
+                <div
+                  className="flex
+              flex-col"
+                >
+                  {event.payload.commits
+                    ?.slice(0, 2)
+                    .map((commit, commitIndex) => (
+                      <p key={commitIndex} className="text-sm text-neutral-400">
+                        {truncate(commit.message)}
+                      </p>
+                    ))}
+                  <span className="text-xs font-semibold text-neutral-300 mt-2">
+                    {event.payload.commits.length}{" "}
+                    {event.payload.commits.length > 1 ? "commits" : "commit"}
+                  </span>
+                </div>
+                <p className="text-neutral-500 text-sm whitespace-nowrap">
+                  {formatDate(event.created_at)}
+                </p>
+              </div>
+            </div>
+          </motion.li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+};
+
+export default Github;
+`;

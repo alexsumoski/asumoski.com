@@ -12,7 +12,7 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
 }) => {
   const [offset, setOffset] = useState(0);
 
-  const size = 150;
+  const size = 160;
   const strokeWidth = 9;
   const radius = size / 2 - strokeWidth / 2;
   const circumference = 2 * Math.PI * radius;
