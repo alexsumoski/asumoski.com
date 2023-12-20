@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import logo from "../assets/logo.svg";
+import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -21,10 +22,13 @@ const Header: React.FC = () => {
       <div className="fixed top-0 left-0 right-0 w-full z-10 bg-transparent backdrop-filter backdrop-blur-lg bg-opacity-30">
         <div className="flex justify-between items-center xl:px-20 md:px-8 sm:px-2 px-4 py-6 w-full">
           <motion.div variants={leftFade} initial="hidden" animate="visible">
-            <a href="/">
-              <Image src={logo} height={50} width={50} alt="Logo" />
-            </a>
+            <Link href="/">
+              <a>
+                <Image src={logo} height={50} width={50} alt="Logo" />
+              </a>
+            </Link>
           </motion.div>
+
           <motion.div
             variants={rigthFade}
             initial="hidden"
